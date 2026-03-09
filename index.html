@@ -29,18 +29,52 @@
             <div class="search-box">
                 <input type="text" id="companySearch" placeholder="Search by company or participant...">
             </div>
+            <div class="view-switcher">
+                <button class="view-btn active" id="viewGrid" title="Directory View">
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </button>
+                <button class="view-btn" id="viewTable" title="Summary Table">
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                </button>
+            </div>
             <div class="filter-group">
                 <button class="filter-btn active" data-filter="all">All Scenarios</button>
-                <button class="filter-btn" data-filter="Core">Core Scenarios</button>
-                <button class="filter-btn" data-filter="Advanced">Advanced Scenarios</button>
+                <button class="filter-btn" data-filter="Core">Core</button>
+                <button class="filter-btn" data-filter="Advanced">Advanced</button>
             </div>
         </section>
 
-        <section class="mapping-grid" id="mappingGrid">
+        <section id="mappingGrid" class="mapping-grid">
             <!-- Data will be injected here -->
             <div class="loader">
                 <div class="spinner"></div>
-                <p>Loading scenario data...</p>
+                <p>Loading directory...</p>
+            </div>
+        </section>
+
+        <section id="summaryView" class="summary-view" style="display: none;">
+            <div class="table-container card glass">
+                <table id="summaryTable">
+                    <!-- Table content will be injected by app.js -->
+                </table>
+            </div>
+            
+            <div class="legend-disclaimer">
+                <div class="legend card glass">
+                    <h3>Legend</h3>
+                    <div class="legend-grid">
+                        <div class="legend-item"><span class="status-icon pass">✅</span> <span>Pass: Scenario executed successfully</span></div>
+                        <div class="legend-item"><span class="status-icon partial">🟡</span> <span>Partial: Executed with limitations</span></div>
+                        <div class="legend-item"><span class="status-icon issue">🔴</span> <span>Issue: Could not be completed</span></div>
+                        <div class="legend-item"><span class="status-icon untested">⚪</span> <span>Not tested: Scenario not attempted</span></div>
+                    </div>
+                </div>
+                <div class="disclaimer card glass">
+                    <h3>Plug Test Info</h3>
+                    <p><strong>CSC Version:</strong> API v2.2.0</p>
+                    <p><strong>Date:</strong> March 2026</p>
+                    <p><small>* Results are based on provided Jotform survey responses.</small></p>
+                </div>
             </div>
         </section>
     </main>

@@ -267,24 +267,128 @@ footer {
 }
 
 /* Loader */
-.loader {
-    grid-column: 1 / -1;
+.view-switcher {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.3rem;
+    border-radius: 0.8rem;
+    border: 1px solid var(--glass-border);
+}
+
+.view-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+    color: white;
+}
+
+.view-btn.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Summary Table Styles */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.2rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.95rem;
+}
+
+tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.status-cell {
     text-align: center;
-    padding: 4rem;
 }
 
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid var(--glass-border);
-    border-top-color: var(--primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 1rem;
+.status-icon {
+    font-size: 1.2rem;
+    display: inline-block;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+.participant-cell {
+    font-weight: 600;
+    color: var(--primary);
+    max-width: 250px;
+}
+
+/* Legend & Disclaimer */
+.legend-disclaimer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.legend h3, .disclaimer h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.disclaimer p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 900px) {
+    .legend-disclaimer { grid-template-columns: 1fr; }
 }
 
 /* Modal */

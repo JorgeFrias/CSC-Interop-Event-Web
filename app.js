@@ -1,24 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
     let appData = { scenarios: [], companies: [] };
+    let currentFilter = 'all';
+    let currentView = 'grid'; // 'grid' or 'table'
+
     const grid = document.getElementById('mappingGrid');
+    const summaryView = document.getElementById('summaryView');
+    const summaryTable = document.getElementById('summaryTable');
     const searchInput = document.getElementById('companySearch');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const viewGridBtn = document.getElementById('viewGrid');
+    const viewTableBtn = document.getElementById('viewTable');
 
     // Fetch the processed data
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
             appData = data;
-            renderCompanies(data.companies);
+            updateDisplay();
         })
         .catch(err => {
             console.error('Error loading data:', err);
             grid.innerHTML = '<p class="error">Error loading data. Please check the network tab.</p>';
         });
 
-    function renderCompanies(companies) {
+    function updateDisplay() {
+        const filtered = filterData(appData.companies);
+        if (currentView === 'grid') {
+            renderCompaniesGrid(filtered);
+        } else {
+            renderSummaryTable(filtered);
+        }
+    }
+
+    function filterData(companies) {
+        const term = searchInput.value.toLowerCase();
+        return companies.filter(c => {
+            const matchesSearch = c.organisation.toLowerCase().includes(term) || 
+                                 c.contact.toLowerCase().includes(term) ||
+                                 c.participants.some(p => p.toLowerCase().includes(term));
+            
+            if (!matchesSearch) return false;
+            if (currentFilter === 'all') return true;
+            
+            const companyScenarios = appData.scenarios.filter(s => c.scenarios.includes(s.id));
+            return companyScenarios.some(s => s.category === currentFilter);
+        });
+    }
+
+    function renderCompaniesGrid(companies) {
+        grid.style.display = 'grid';
+        summaryView.style.display = 'none';
+
         if (companies.length === 0) {
-            grid.innerHTML = '<p class="no-results">No companies found matching your criteria.</p>';
+            grid.innerHTML = '<p class="no-results" style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-dim);">No participants found matching your criteria.</p>';
             return;
         }
 
@@ -47,10 +81,62 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }).join('');
 
-        // Add event listeners to cards for extra details (optional modal)
         document.querySelectorAll('.company-card').forEach(card => {
             card.addEventListener('click', () => showDetails(card.dataset.id));
         });
+    }
+
+    function renderSummaryTable(companies) {
+        grid.style.display = 'none';
+        summaryView.style.display = 'block';
+
+        if (companies.length === 0) {
+            summaryTable.innerHTML = '<tr><td style="text-align: center; padding: 3rem; color: var(--text-dim);">No results found.</td></tr>';
+            return;
+        }
+
+        // Use a fixed set of scenarios for the columns to keep it clean, 
+        // prioritizing Core then Advanced
+        const scenarios = appData.scenarios;
+        
+        const headerHtml = `
+            <thead>
+                <tr>
+                    <th class="participant-cell">Participant</th>
+                    ${scenarios.map(s => `<th class="status-cell" title="${s.name}">${s.id}</th>`).join('')}
+                    <th>Role</th>
+                </tr>
+            </thead>
+        `;
+
+        const bodyHtml = `
+            <tbody>
+                ${companies.map(company => `
+                    <tr>
+                        <td class="participant-cell">${company.organisation}</td>
+                        ${scenarios.map(s => {
+                            const isCovered = company.scenarios.includes(s.id);
+                            return `<td class="status-cell">
+                                <span class="status-icon ${isCovered ? 'pass' : 'untested'}" title="${isCovered ? 'Pass' : 'Not tested'}">
+                                    ${isCovered ? '✅' : '⚪'}
+                                </span>
+                            </td>`;
+                        }).join('')}
+                        <td class="role-cell">
+                            ${company.roles.map(r => {
+                                if (r.includes('Wallet')) return 'Wallet';
+                                if (r.includes('Service Provider')) return 'RSSP/QTSP';
+                                if (r.includes('Client')) return 'Client';
+                                if (r.includes('Observer')) return 'Observer';
+                                return r;
+                            }).filter((v, i, a) => a.indexOf(v) === i).join(', ')}
+                        </td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        `;
+
+        summaryTable.innerHTML = headerHtml + bodyHtml;
     }
 
     function showDetails(id) {
@@ -77,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 style="margin-bottom: 1rem;">Implementation Details</h3>
                 <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 1rem;">
                     <strong>Active Implementations:</strong><br>
-                    ${company.implementations.length > 0 ? company.implementations.join(', ') : 'None specified'}
+                    ${Array.isArray(company.implementations) ? company.implementations.join(', ') : Object.values(company.implementations).join(', ')}
                 </div>
             </div>
 
@@ -97,34 +183,30 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'block';
     }
 
-    // Search functionality
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = appData.companies.filter(c => 
-            c.organisation.toLowerCase().includes(term) || 
-            c.contact.toLowerCase().includes(term) ||
-            c.participants.some(p => p.toLowerCase().includes(term))
-        );
-        renderCompanies(filtered);
-    });
+    // Event Listeners
+    searchInput.addEventListener('input', () => updateDisplay());
 
-    // Filter functionality
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
-            const filter = btn.dataset.filter;
-            if (filter === 'all') {
-                renderCompanies(appData.companies);
-            } else {
-                const filtered = appData.companies.filter(c => {
-                    const companyScenarios = appData.scenarios.filter(s => c.scenarios.includes(s.id));
-                    return companyScenarios.some(s => s.category === filter);
-                });
-                renderCompanies(filtered);
-            }
+            currentFilter = btn.dataset.filter;
+            updateDisplay();
         });
+    });
+
+    viewGridBtn.addEventListener('click', () => {
+        viewGridBtn.classList.add('active');
+        viewTableBtn.classList.remove('active');
+        currentView = 'grid';
+        updateDisplay();
+    });
+
+    viewTableBtn.addEventListener('click', () => {
+        viewTableBtn.classList.add('active');
+        viewGridBtn.classList.remove('active');
+        currentView = 'table';
+        updateDisplay();
     });
 
     // Close modal
