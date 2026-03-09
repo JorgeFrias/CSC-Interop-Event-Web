@@ -1,0 +1,510 @@
+{
+  "scenarios": [
+    {
+      "id": "API-01",
+      "name": "Credential Discovery",
+      "category": "Core"
+    },
+    {
+      "id": "API-02",
+      "name": "Authorization & SAD Lifecycle",
+      "category": "Core"
+    },
+    {
+      "id": "API-03",
+      "name": "Hash-Based Signing (Single Hash)",
+      "category": "Core"
+    },
+    {
+      "id": "API-05",
+      "name": "Deterministic Error Handling",
+      "category": "Core"
+    },
+    {
+      "id": "SC-01",
+      "name": "Document Signing (Wallet-to-RSSP)",
+      "category": "Advanced"
+    },
+    {
+      "id": "SC-02",
+      "name": "Multi-Provider Interoperability",
+      "category": "Advanced"
+    }
+  ],
+  "companies": [
+    {
+      "id": "6486419070301840164",
+      "organisation": "intarsys GmbH / procilon GROUP GmbH",
+      "contact": "Thomas Pielczyk",
+      "participants": [
+        "Thomas Pielczyk",
+        "Andreas Mayer",
+        "Jörg Henschel"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation",
+        "CSC Client (non wallet) implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6486309977717699502",
+      "organisation": "Entaksi Solutions SpA",
+      "contact": "Stefano Travelli",
+      "participants": [
+        "Stefano Travelli, Ciro Sasso"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6486252590413345988",
+      "organisation": "Evrotrust Technologies AD",
+      "contact": "Hristian Daskalov",
+      "participants": [
+        "Mr. Hristian Daskalov - Security Compliance Director",
+        "Ms. Petya Valkova - Chief Product Officer"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6486175941418488436",
+      "organisation": "Aruba Pec/Actalis",
+      "contact": "Marco Pancioni",
+      "participants": [
+        "Claudio Cheli (claudio.cheli@staff.aruba.it)",
+        "Marco Pancioni (marco.pancioni@staff.aruba.it)"
+      ],
+      "roles": [
+        "Wallet Provider",
+        "CSC Service Provider (QTSP / RSSP)",
+        "Issuer",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "Wallet Implementation",
+        "CSC API 2.2.0 Implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01",
+        "SC-02"
+      ]
+    },
+    {
+      "id": "6486003710128622031",
+      "organisation": "STS",
+      "contact": "Cristian Zaiu",
+      "participants": [
+        "Calugaru Teodor",
+        "Pascu Horia",
+        "Zaiu Cristian."
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "Issuer"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6485954687886898175",
+      "organisation": "certSIGN S.A.",
+      "contact": "Ionut Ciobanu",
+      "participants": [
+        "Nicolae Ghibu",
+        "George Gugulea",
+        "Ionut Florea",
+        "Marius Scarlat",
+        "Ionut Ciobanu"
+      ],
+      "roles": [
+        "Wallet Provider",
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
+        "Issuer",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "Wallet Implementation",
+        "CSC API 2.2.0 Implementation",
+        "CSC Client (non wallet) implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01",
+        "SC-02"
+      ]
+    },
+    {
+      "id": "6485387865351055872",
+      "organisation": "EAD Trust, European Agency of Digital Trust, S.L.",
+      "contact": "Eduardo Inza",
+      "participants": [
+        "Daniel Rontomé",
+        "Bruno Valcarcel"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
+        "Issuer",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6485378604115802115",
+      "organisation": "Intesi Group",
+      "contact": "Daniele Ribaudo",
+      "participants": [
+        "Daniele Ribaudo, Francesco Barcellini, Marco Monacelli"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation",
+        "CSC Client (non wallet) implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6485284679559301139",
+      "organisation": "primesign",
+      "contact": "Cornelia Bruchsteiner",
+      "participants": [
+        "- Cornelia Bruchsteiner"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6485234105362357601",
+      "organisation": "Cleverbase",
+      "contact": "Hidde Dorhout",
+      "participants": [
+        "- Hidde Dorhout",
+        "- Bob Reynders",
+        "- Josh Cohen"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)"
+      ],
+      "implementations": [
+        "Wallet Implementation",
+        "CSC API 2.2.0 Implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6485192643423919620",
+      "organisation": "Adobe",
+      "contact": "Andrea Valle",
+      "participants": [
+        "Andrea Valle",
+        "Santhi Muthusamy"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "CSC Client (non wallet) implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6485168917329285993",
+      "organisation": "Ascertia Limited",
+      "contact": "Jorge Frias",
+      "participants": [
+        "- Sven Prinsloo",
+        "- Jorge Frias"
+      ],
+      "roles": [
+        "Wallet Provider",
+        "CSC Service Provider (QTSP / RSSP)"
+      ],
+      "implementations": [
+        "Wallet Implementation",
+        "CSC API 2.2.0 Implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01",
+        "SC-02"
+      ]
+    },
+    {
+      "id": "6485166663914957696",
+      "organisation": "Docaposte Certinomis",
+      "contact": "Louis Raffin",
+      "participants": [
+        "François CHASSERY",
+        "Jean Marc DESPERRIER",
+        "Louis RAFFIN"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
+        "Issuer",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation",
+        "CSC Client (non wallet) implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6485157475212739689",
+      "organisation": "Able Tech s.p.a",
+      "contact": "Michael Perdomini",
+      "participants": [
+        "Michael Perdomini"
+      ],
+      "roles": [
+        "Relying Party / Verifier",
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6485155206788095811",
+      "organisation": "docusign",
+      "contact": "Andrew Mittleider",
+      "participants": [
+        "Erika Veselova",
+        "Andrew Mittleider"
+      ],
+      "roles": [
+        "CSC Client (non-wallet)"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation",
+        "CSC Client (non wallet) implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05"
+      ]
+    },
+    {
+      "id": "6485140000276113810",
+      "organisation": "ANSE",
+      "contact": "Andrei Nicoara",
+      "participants": [
+        "Andrei Nicoara"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6485130545028886036",
+      "organisation": "HARICA/GUnet",
+      "contact": "Antonios Eleftheriadis",
+      "participants": [
+        "Konstantinos Maneadis"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "Issuer"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    },
+    {
+      "id": "6485126517689598410",
+      "organisation": "ASEE Solutions d.o.o",
+      "contact": "Marin Mihajlović",
+      "participants": [
+        "Paskal Šimec"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation",
+        "CSC Client (non wallet) implementation",
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6485126475688679801",
+      "organisation": "ASEE",
+      "contact": "Paskal Šimec",
+      "participants": [
+        "Marin Mihajlović"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "CSC API 2.2.0 Implementation",
+        "CSC Client (non wallet) implementation",
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6485125175818733303",
+      "organisation": "Ministry of economic affairs and climate policy",
+      "contact": "Rob Brand",
+      "participants": [
+        "Rob Brand"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6485120461621563741",
+      "organisation": "ETSI",
+      "contact": "Laurent Velez",
+      "participants": [
+        "Laurent Velez"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "N/A (attending as Observer only)"
+      ],
+      "scenarios": []
+    },
+    {
+      "id": "6485118793415901870",
+      "organisation": "iGrant.io",
+      "contact": "Lal Chandran",
+      "participants": [
+        "Lal Chandran"
+      ],
+      "roles": [
+        "Wallet Provider",
+        "CSC Client (non-wallet)",
+        "Issuer",
+        "Relying Party / Verifier"
+      ],
+      "implementations": {
+        "0": "Wallet Implementation",
+        "1": "CSC Client (non wallet) implementation",
+        "other": "Issuer and verifier integration"
+      },
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ]
+    }
+  ]
+}
