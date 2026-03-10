@@ -267,7 +267,7 @@ footer {
     border-top: 1px solid var(--glass-border);
 }
 
-/* Loader */
+/* View Switcher */
 .view-switcher {
     display: flex;
     background: rgba(255, 255, 255, 0.05);
@@ -280,13 +280,24 @@ footer {
     background: transparent;
     border: none;
     color: var(--text-dim);
-    padding: 0.5rem;
+    width: 36px;
+    height: 36px;
+    padding: 0;
     border-radius: 0.6rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
 }
 
 .view-btn:hover {
@@ -466,14 +477,21 @@ tr:hover td {
 .close-btn {
     position: absolute;
     right: 1.5rem;
-    top: 1rem;
-    font-size: 2rem;
-    cursor: pointer;
+    top: 1.5rem;
     color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
 }
 
 .close-btn:hover {
     color: white;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {

@@ -70,19 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateExpansionUI() {
-        const expandIcon = toggleExpandBtn.querySelector('.expand-icon');
-        const collapseIcon = toggleExpandBtn.querySelector('.collapse-icon');
-        const btnText = toggleExpandBtn.querySelector('span');
+        const expandIcon = document.getElementById('expandIcon');
+        const btnText = toggleExpandBtn.querySelector('span:not(.material-symbols-outlined)');
 
         if (isExpanded) {
             mainContainer.classList.add('expanded');
-            expandIcon.style.display = 'none';
-            collapseIcon.style.display = 'block';
+            expandIcon.textContent = 'close_fullscreen';
             btnText.textContent = 'Collapse';
         } else {
             mainContainer.classList.remove('expanded');
-            expandIcon.style.display = 'block';
-            collapseIcon.style.display = 'none';
+            expandIcon.textContent = 'open_in_full';
             btnText.textContent = 'Full Width';
         }
     }
