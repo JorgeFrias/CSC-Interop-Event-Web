@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let resultsData = {}; // From CSV: { "Org Name": { "API-01": "Pass", ... } }
     let appData = { scenarios: [], companies: [] };
     let currentFilter = 'all';
-    let currentView = 'grid'; // 'grid' or 'table'
+    let currentView = 'grid';
 
     const grid = document.getElementById('mappingGrid');
     const summaryView = document.getElementById('summaryView');
@@ -11,17 +12,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewGridBtn = document.getElementById('viewGrid');
     const viewTableBtn = document.getElementById('viewTable');
 
-    // Fetch the processed data
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            appData = data;
-            updateDisplay();
-        })
-        .catch(err => {
-            console.error('Error loading data:', err);
-            grid.innerHTML = '<p class="error">Error loading data. Please check the network tab.</p>';
-        });
+    // Fetch both sources
+    Promise.all([
+        fetch('data.json').then(r => r.json()),
+        fetch('results.csv').then(r => r.text())
+    ])
+    .then(([jsonData, csvText]) => {
+        appData = jsonData;
+        resultsData = parseResultsCSV(csvText);
+        updateDisplay();
+    })
+    .catch(err => {
+        console.error('Error loading data:', err);
+        grid.innerHTML = '<p class="error">Error loading data. Please check the network tab.</p>';
+    });
+
+    function parseResultsCSV(text) {
+        const lines = text.trim().split('\n');
+        const headers = lines[0].split(',').map(h => h.trim());
+        const data = {};
+
+        for (let i = 1; i < lines.length; i++) {
+            // Basic CSV parsing (handles quotes)
+            const row = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+            if (!row) continue;
+            
+            const orgData = {};
+            const orgName = row[0].replace(/"/g, '').trim();
+            
+            headers.forEach((header, index) => {
+                if (index > 0 && index < headers.length - 1) { // Scenario columns
+                    orgData[header] = row[index].trim();
+                }
+            });
+            data[orgName] = orgData;
+        }
+        return data;
+    }
 
     function updateDisplay() {
         const filtered = filterData(appData.companies);
@@ -115,10 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <tr>
                         <td class="participant-cell">${company.organisation}</td>
                         ${scenarios.map(s => {
-                            const isCovered = company.scenarios.includes(s.id);
+                            const status = resultsData[company.organisation]?.[s.id] || 'Untested';
+                            const iconMap = { 'Pass': '✅', 'Partial': '🔶', 'Issue': '❌', 'Untested': '' };
+                            const classMap = { 'Pass': 'pass', 'Partial': 'partial', 'Issue': 'issue', 'Untested': 'untested' };
+                            
                             return `<td class="status-cell">
-                                <span class="status-icon ${isCovered ? 'pass' : 'untested'}" title="${isCovered ? 'Pass' : 'Not tested'}">
-                                    ${isCovered ? '✅' : '⚪'}
+                                <span class="status-icon ${classMap[status]}" title="${status}">
+                                    ${iconMap[status]}
                                 </span>
                             </td>`;
                         }).join('')}
