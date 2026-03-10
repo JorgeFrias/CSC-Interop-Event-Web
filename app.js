@@ -15,24 +15,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewGridBtn = document.getElementById('viewGrid');
     const viewTableBtn = document.getElementById('viewTable');
 
-    // Fetch both sources
-    Promise.all([
-        fetch('data.json').then(r => r.json()),
-        fetch('results.csv').then(r => r.text())
-    ])
-    .then(([jsonData, csvText]) => {
-        appData = jsonData;
-        resultsData = parseResultsCSV(csvText);
-        
-        // Handle routing
-        checkRoute();
-        
-        updateDisplay();
-    })
-    .catch(err => {
-        console.error('Error loading data:', err);
-        grid.innerHTML = '<p class="error">Error loading data. Please check the network tab.</p>';
-    });
+    // Initial fetch
+    fetchData();
+
+    // Auto-refresh every 60 seconds
+    setInterval(fetchData, 60000);
+
+    function fetchData() {
+        const cacheBuster = `?t=${Date.now()}`;
+        Promise.all([
+            fetch(`data.json${cacheBuster}`).then(r => r.json()),
+            fetch(`results.csv${cacheBuster}`).then(r => r.text())
+        ])
+        .then(([jsonData, csvText]) => {
+            appData = jsonData;
+            resultsData = parseResultsCSV(csvText);
+            
+            // Only handle routing on the very first load to avoid disrupting the view
+            if (!fetchData.initialized) {
+                checkRoute();
+                loadExpansionState();
+                fetchData.initialized = true;
+            }
+            
+            updateDisplay();
+            console.log('Data refreshed:', new Date().toLocaleTimeString());
+        })
+        .catch(err => {
+            console.error('Error refreshing data:', err);
+        });
+    }
 
     function checkRoute() {
         const path = window.location.pathname.toLowerCase().replace(/\/$/, "");
@@ -42,6 +54,36 @@ document.addEventListener('DOMContentLoaded', () => {
             currentView = 'table';
             viewTableBtn.classList.add('active');
             viewGridBtn.classList.remove('active');
+        } else {
+            currentView = 'grid';
+            viewGridBtn.classList.add('active');
+            viewTableBtn.classList.remove('active');
+        }
+    }
+
+    function loadExpansionState() {
+        const saved = localStorage.getItem('tableExpanded');
+        if (saved === 'true') {
+            isExpanded = true;
+            updateExpansionUI();
+        }
+    }
+
+    function updateExpansionUI() {
+        const expandIcon = toggleExpandBtn.querySelector('.expand-icon');
+        const collapseIcon = toggleExpandBtn.querySelector('.collapse-icon');
+        const btnText = toggleExpandBtn.querySelector('span');
+
+        if (isExpanded) {
+            mainContainer.classList.add('expanded');
+            expandIcon.style.display = 'none';
+            collapseIcon.style.display = 'block';
+            btnText.textContent = 'Collapse';
+        } else {
+            mainContainer.classList.remove('expanded');
+            expandIcon.style.display = 'block';
+            collapseIcon.style.display = 'none';
+            btnText.textContent = 'Full Width';
         }
     }
 
@@ -247,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         viewGridBtn.classList.add('active');
         viewTableBtn.classList.remove('active');
         currentView = 'grid';
+        history.pushState(null, '', './');
         updateDisplay();
     });
 
@@ -254,27 +297,14 @@ document.addEventListener('DOMContentLoaded', () => {
         viewTableBtn.classList.add('active');
         viewGridBtn.classList.remove('active');
         currentView = 'table';
+        history.pushState(null, '', 'coverage-test');
         updateDisplay();
     });
 
     toggleExpandBtn.addEventListener('click', () => {
         isExpanded = !isExpanded;
-        
-        const expandIcon = toggleExpandBtn.querySelector('.expand-icon');
-        const collapseIcon = toggleExpandBtn.querySelector('.collapse-icon');
-        const btnText = toggleExpandBtn.querySelector('span');
-
-        if (isExpanded) {
-            mainContainer.classList.add('expanded');
-            expandIcon.style.display = 'none';
-            collapseIcon.style.display = 'block';
-            btnText.textContent = 'Collapse';
-        } else {
-            mainContainer.classList.remove('expanded');
-            expandIcon.style.display = 'block';
-            collapseIcon.style.display = 'none';
-            btnText.textContent = 'Full Width';
-        }
+        localStorage.setItem('tableExpanded', isExpanded);
+        updateExpansionUI();
     });
 
     // Close modal
