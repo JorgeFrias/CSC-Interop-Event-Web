@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Serve Project (npx serve)",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": ["serve", "-s", "."],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/index.html"
+        },
+        {
+            "name": "Run fetch.js (Puppeteer)",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": ["node"],
+            "program": "${workspaceFolder}/fetch.js",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run preprocess.js",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": ["node"],
+            "program": "${workspaceFolder}/preprocess.js",
+            "console": "integratedTerminal"
+        }
+    ]
+}

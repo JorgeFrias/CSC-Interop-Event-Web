@@ -98,6 +98,7 @@ h1 {
 .glow-text {
     background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 30px var(--primary-glow);
 }
@@ -299,6 +300,43 @@ footer {
 }
 
 /* Summary Table Styles */
+.summary-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.expand-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.expand-btn:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.container.expanded {
+    max-width: 100%;
+    padding: 0 4rem;
+}
+
+@media (max-width: 768px) {
+    .container.expanded {
+        padding: 0 1rem;
+    }
+}
+
 .table-container {
     overflow-x: auto;
     margin-bottom: 2rem;

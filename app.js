@@ -3,10 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let appData = { scenarios: [], companies: [] };
     let currentFilter = 'all';
     let currentView = 'grid';
+    let isExpanded = false;
 
+    const mainContainer = document.querySelector('main.container');
     const grid = document.getElementById('mappingGrid');
     const summaryView = document.getElementById('summaryView');
     const summaryTable = document.getElementById('summaryTable');
+    const toggleExpandBtn = document.getElementById('toggleExpand');
     const searchInput = document.getElementById('companySearch');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const viewGridBtn = document.getElementById('viewGrid');
@@ -20,12 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(([jsonData, csvText]) => {
         appData = jsonData;
         resultsData = parseResultsCSV(csvText);
+        
+        // Handle routing
+        checkRoute();
+        
         updateDisplay();
     })
     .catch(err => {
         console.error('Error loading data:', err);
         grid.innerHTML = '<p class="error">Error loading data. Please check the network tab.</p>';
     });
+
+    function checkRoute() {
+        const path = window.location.pathname.toLowerCase().replace(/\/$/, "");
+        const searchParams = new URLSearchParams(window.location.search);
+        
+        if (path.endsWith('/coverage-test') || searchParams.has('view') && searchParams.get('view') === 'table') {
+            currentView = 'table';
+            viewTableBtn.classList.add('active');
+            viewGridBtn.classList.remove('active');
+        }
+    }
 
     function parseResultsCSV(text) {
         const lines = text.trim().split('\n');
@@ -237,6 +255,26 @@ document.addEventListener('DOMContentLoaded', () => {
         viewGridBtn.classList.remove('active');
         currentView = 'table';
         updateDisplay();
+    });
+
+    toggleExpandBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        
+        const expandIcon = toggleExpandBtn.querySelector('.expand-icon');
+        const collapseIcon = toggleExpandBtn.querySelector('.collapse-icon');
+        const btnText = toggleExpandBtn.querySelector('span');
+
+        if (isExpanded) {
+            mainContainer.classList.add('expanded');
+            expandIcon.style.display = 'none';
+            collapseIcon.style.display = 'block';
+            btnText.textContent = 'Collapse';
+        } else {
+            mainContainer.classList.remove('expanded');
+            expandIcon.style.display = 'block';
+            collapseIcon.style.display = 'none';
+            btnText.textContent = 'Full Width';
+        }
     });
 
     // Close modal
