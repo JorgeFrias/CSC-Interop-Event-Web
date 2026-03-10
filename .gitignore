@@ -8,6 +8,7 @@ responses/
 network_data.jsonl
 window_data*.json
 !index.html
+!404.html
 !data.json
 !package.json
 !package-lock.json
