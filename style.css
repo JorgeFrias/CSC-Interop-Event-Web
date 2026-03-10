@@ -182,6 +182,9 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 2rem;
+}
+
+.mapping-grid, .summary-view {
     margin-bottom: 4rem;
 }
 
@@ -262,6 +265,7 @@ h1 {
 footer {
     text-align: center;
     padding: 2rem 0;
+    margin-top: 8rem;
     color: #475569;
     font-size: 0.9rem;
     border-top: 1px solid var(--glass-border);
