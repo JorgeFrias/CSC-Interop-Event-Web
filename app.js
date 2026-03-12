@@ -179,51 +179,63 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Use a fixed set of scenarios for the columns to keep it clean, 
-        // prioritizing Core then Advanced
-        const scenarios = appData.scenarios;
-        
+        // Extract Wallets and RSSPs from the filtered list
+        const wallets = companies.filter(c => c.roles.includes('Wallet Provider'));
+        const rssps = companies.filter(c => c.roles.includes('CSC Service Provider (QTSP / RSSP)'));
+
+        if (wallets.length === 0 || rssps.length === 0) {
+            summaryTable.innerHTML = '<tr><td style="text-align: center; padding: 3rem; color: var(--text-dim);">Not enough participants to form a matrix (need both Wallets and RSSPs in the current view).</td></tr>';
+            return;
+        }
+
         const headerHtml = `
             <thead>
                 <tr>
-                    <th class="participant-cell">Participant</th>
-                    ${scenarios.map(s => `<th class="status-cell" title="${s.name}">${s.id}</th>`).join('')}
-                    <th>Role</th>
+                    <th class="participant-cell sticky-col" style="vertical-align: bottom;">Wallet \\ RSSP</th>
+                    ${rssps.map(r => `<th class="status-cell rssp-header" title="${r.organisation}"><div class="vertical-text">${r.organisation}</div></th>`).join('')}
                 </tr>
             </thead>
         `;
 
         const bodyHtml = `
             <tbody>
-                ${companies.map(company => `
+                ${wallets.map(wallet => `
                     <tr>
-                        <td class="participant-cell">${company.organisation}</td>
-                        ${scenarios.map(s => {
-                            const status = resultsData[company.organisation]?.[s.id] || 'Untested';
+                        <td class="participant-cell sticky-col">${wallet.organisation}</td>
+                        ${rssps.map(rssp => {
+                            const status = getMockStatus(wallet.id, rssp.id);
                             const iconMap = { 'Pass': '✅', 'Partial': '🔶', 'Issue': '❌', 'Untested': '' };
                             const classMap = { 'Pass': 'pass', 'Partial': 'partial', 'Issue': 'issue', 'Untested': 'untested' };
                             
                             return `<td class="status-cell">
-                                <span class="status-icon ${classMap[status]}" title="${status}">
+                                <span class="status-icon ${classMap[status]}" title="${wallet.organisation} (Wallet) vs ${rssp.organisation} (RSSP): ${status}">
                                     ${iconMap[status]}
                                 </span>
                             </td>`;
                         }).join('')}
-                        <td class="role-cell">
-                            ${company.roles.map(r => {
-                                if (r.includes('Wallet')) return 'Wallet';
-                                if (r.includes('Service Provider')) return 'RSSP/QTSP';
-                                if (r.includes('Client')) return 'Client';
-                                if (r.includes('Observer')) return 'Observer';
-                                return r;
-                            }).filter((v, i, a) => a.indexOf(v) === i).join(', ')}
-                        </td>
                     </tr>
                 `).join('')}
             </tbody>
         `;
 
         summaryTable.innerHTML = headerHtml + bodyHtml;
+    }
+
+    function getMockStatus(id1, id2) {
+        // Hash the ids together for consistent mocking based on pair
+        let hash = 0;
+        const str = id1 + "_" + id2;
+        for (let i = 0; i < str.length; i++) {
+            hash = ((hash << 5) - hash) + str.charCodeAt(i);
+            hash |= 0;
+        }
+        hash = Math.abs(hash);
+        
+        const rand = hash % 100;
+        if (rand < 50) return 'Pass';
+        if (rand < 70) return 'Untested';
+        if (rand < 85) return 'Partial';
+        return 'Issue';
     }
 
     function showDetails(id) {

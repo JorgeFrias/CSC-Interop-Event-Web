@@ -47,8 +47,8 @@
                 <button class="view-btn active" id="viewGrid" title="Directory View">
                    <span class="material-symbols-outlined">grid_view</span>
                 </button>
-                <button class="view-btn" id="viewTable" title="Summary Table">
-                   <span class="material-symbols-outlined">view_list</span>
+                <button class="view-btn" id="viewTable" title="Interoperability Matrix">
+                   <span class="material-symbols-outlined">table_chart</span>
                 </button>
             </div>
             <div class="filter-group">
@@ -82,6 +82,10 @@
             <div class="legend-disclaimer">
                 <div class="legend card glass">
                     <h3>Legend</h3>
+                    <div style="margin-bottom: 1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.5rem;"><strong>Matrix Rows:</strong> Wallet Providers</p>
+                        <p style="font-size: 0.85rem; color: var(--text-dim);"><strong>Matrix Columns:</strong> CSC Service Providers (QTSP / RSSP)</p>
+                    </div>
                     <div class="legend-grid">
                         <div class="legend-item"><span class="status-icon pass">✅</span> <span>Pass: Scenario executed successfully</span></div>
                         <div class="legend-item"><span class="status-icon partial">🔶</span> <span>Partial: Executed with limitations</span></div>

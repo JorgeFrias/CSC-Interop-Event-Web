@@ -415,6 +415,41 @@ tr:hover td {
     max-width: 250px;
 }
 
+/* Matrix Table Specific Styles */
+.sticky-col {
+    position: sticky;
+    left: 0;
+    background: var(--bg-color);
+    z-index: 11;
+}
+
+th.sticky-col {
+    z-index: 12;
+}
+
+tr:hover .sticky-col {
+    background: #0d1117; /* slightly lighter than bg-color so hover is visible */
+}
+
+.rssp-header {
+    vertical-align: bottom;
+    padding-bottom: 1rem;
+    height: 180px; /* give enough height for rotated text */
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: left;
+    max-height: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    color: var(--text-main);
+}
+
+
 /* Legend & Disclaimer */
 .legend-disclaimer {
     display: grid;
