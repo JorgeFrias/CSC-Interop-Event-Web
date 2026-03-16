@@ -113,6 +113,17 @@ h1 {
     font-weight: 400;
 }
 
+.edition-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
 .card {
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
@@ -324,14 +335,17 @@ footer {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     color: var(--text-dim);
-    width: 38px;
+    padding: 0.6rem 1.2rem;
     height: 38px;
     border-radius: 0.8rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 .nav-icon-btn:hover {

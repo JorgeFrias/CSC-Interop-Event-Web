@@ -1,4 +1,4 @@
-# CSC Interoperability Event 2026 - Scenario Mapping
+# CSC Interoperability Event - EUDI Wallet 2026 - Scenario Mapping
 
 This project provides a mapping of EUDI Wallet participants to Cloud Signature Consortium (CSC) interoperability scenarios. It includes a directory of participants and a summary table showing scenario coverage.
 
