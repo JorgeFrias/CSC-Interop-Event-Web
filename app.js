@@ -369,6 +369,57 @@ document.addEventListener('DOMContentLoaded', () => {
         updateExpansionUI();
     });
 
+    // Share Page (QR Code) logic
+    const sharePageBtn = document.getElementById('sharePage');
+    sharePageBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal');
+        const body = document.getElementById('modalBody');
+        
+        body.innerHTML = `
+            <div class="qr-container">
+                <h2 class="glow-text" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Share this page</h2>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">Scan this code to open the current view on another device.</p>
+                <div id="qrcode" class="qrcode-wrapper glass"></div>
+                <div class="copy-link-wrapper" style="margin-top: 2rem; width: 100%;">
+                    <div class="search-box" style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="shareUrl" value="${window.location.href}" readonly style="flex: 1;">
+                        <button id="copyUrlBtn" class="nav-btn active" style="padding: 0 1.5rem;">Copy</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        modal.style.display = 'block';
+        document.body.classList.add('no-scroll');
+
+        // Generate QR Code
+        new QRCode(document.getElementById("qrcode"), {
+            text: window.location.href,
+            width: 256,
+            height: 256,
+            colorDark : "#6366f1",
+            colorLight : "transparent",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        // Copy functionality
+        const copyBtn = document.getElementById('copyUrlBtn');
+        copyBtn.addEventListener('click', () => {
+            const urlInput = document.getElementById('shareUrl');
+            urlInput.select();
+            document.execCommand('copy');
+            
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            copyBtn.style.background = 'var(--core-color)';
+            
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '';
+            }, 2000);
+        });
+    });
+
     // Close modal
     document.querySelector('.close-btn').onclick = () => {
         document.getElementById('modal').style.display = 'none';
