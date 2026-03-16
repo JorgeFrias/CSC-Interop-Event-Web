@@ -25,6 +25,16 @@
     </script>
 </head>
 <body>
+    <nav class="top-nav glass">
+        <div class="container">
+            <div class="main-nav">
+                <button class="nav-btn" id="viewPlaybook">Event Playbook</button>
+                <button class="nav-btn" id="viewGrid">Participant Directory</button>
+                <button class="nav-btn" id="viewTable">Interoperability Matrix</button>
+            </div>
+        </div>
+    </nav>
+
     <div class="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -42,14 +52,6 @@
         <section class="controls card glass">
             <div class="search-box">
                 <input type="text" id="companySearch" placeholder="Search by company or participant...">
-            </div>
-            <div class="view-switcher">
-                <button class="view-btn active" id="viewGrid" title="Directory View">
-                   <span class="material-symbols-outlined">grid_view</span>
-                </button>
-                <button class="view-btn" id="viewTable" title="Interoperability Matrix">
-                   <span class="material-symbols-outlined">table_chart</span>
-                </button>
             </div>
             <div class="filter-group">
                 <button class="filter-btn active" data-filter="all">All Scenarios</button>
@@ -101,6 +103,15 @@
                 </div>
             </div>
         </section>
+
+        <section id="playbookView" class="playbook-view" style="display: none;">
+            <div class="playbook-content card glass">
+                <div class="loader">
+                    <div class="spinner"></div>
+                    <p>Loading playbook...</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="container">
@@ -115,6 +126,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

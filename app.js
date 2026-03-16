@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let resultsData = {}; // From CSV: { "Org Name": { "API-01": "Pass", ... } }
     let appData = { scenarios: [], companies: [] };
     let currentFilter = 'all';
-    let currentView = 'grid';
+    let currentView = 'playbook';
     let isExpanded = false;
 
     const mainContainer = document.querySelector('main.container');
@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const viewGridBtn = document.getElementById('viewGrid');
     const viewTableBtn = document.getElementById('viewTable');
+    const viewPlaybookBtn = document.getElementById('viewPlaybook');
+    const playbookView = document.getElementById('playbookView');
+    const playbookContent = document.querySelector('.playbook-content');
+    const filterGroup = document.querySelector('.filter-group');
+    const controls = document.querySelector('.controls');
 
     // Initial fetch
     fetchData();
@@ -54,9 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
             currentView = 'table';
             viewTableBtn.classList.add('active');
             viewGridBtn.classList.remove('active');
-        } else {
+            viewPlaybookBtn.classList.remove('active');
+        } else if (path.endsWith('/directory') || searchParams.has('view') && searchParams.get('view') === 'grid') {
             currentView = 'grid';
             viewGridBtn.classList.add('active');
+            viewTableBtn.classList.remove('active');
+            viewPlaybookBtn.classList.remove('active');
+        } else {
+            // Default to playbook for / or any other path
+            currentView = 'playbook';
+            viewPlaybookBtn.classList.add('active');
+            viewGridBtn.classList.remove('active');
             viewTableBtn.classList.remove('active');
         }
     }
@@ -110,9 +123,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDisplay() {
         const filtered = filterData(appData.companies);
         if (currentView === 'grid') {
+            controls.style.display = 'flex';
+            filterGroup.style.display = 'flex';
             renderCompaniesGrid(filtered);
-        } else {
+        } else if (currentView === 'table') {
+            controls.style.display = 'flex';
+            filterGroup.style.display = 'flex';
             renderSummaryTable(filtered);
+        } else if (currentView === 'playbook') {
+            controls.style.display = 'none';
+            renderPlaybook();
+        }
+    }
+
+    function renderPlaybook() {
+        grid.style.display = 'none';
+        summaryView.style.display = 'none';
+        playbookView.style.display = 'block';
+
+        if (!renderPlaybook.loaded) {
+            fetch('playbook.md')
+                .then(r => r.text())
+                .then(text => {
+                    playbookContent.innerHTML = marked.parse(text);
+                    renderPlaybook.loaded = true;
+                })
+                .catch(err => {
+                    console.error('Error loading playbook:', err);
+                    playbookContent.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-dim);">Error loading playbook content.</p>';
+                });
         }
     }
 
@@ -134,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderCompaniesGrid(companies) {
         grid.style.display = 'grid';
         summaryView.style.display = 'none';
+        playbookView.style.display = 'none';
 
         if (companies.length === 0) {
             grid.innerHTML = '<p class="no-results" style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-dim);">No participants found matching your criteria.</p>';
@@ -173,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSummaryTable(companies) {
         grid.style.display = 'none';
         summaryView.style.display = 'block';
+        playbookView.style.display = 'none';
 
         if (companies.length === 0) {
             summaryTable.innerHTML = '<tr><td style="text-align: center; padding: 3rem; color: var(--text-dim);">No results found.</td></tr>';
@@ -280,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         modal.style.display = 'block';
+        document.body.classList.add('no-scroll');
     }
 
     // Event Listeners
@@ -297,16 +339,27 @@ document.addEventListener('DOMContentLoaded', () => {
     viewGridBtn.addEventListener('click', () => {
         viewGridBtn.classList.add('active');
         viewTableBtn.classList.remove('active');
+        viewPlaybookBtn.classList.remove('active');
         currentView = 'grid';
-        history.pushState(null, '', './');
+        history.pushState(null, '', 'directory');
         updateDisplay();
     });
 
     viewTableBtn.addEventListener('click', () => {
         viewTableBtn.classList.add('active');
         viewGridBtn.classList.remove('active');
+        viewPlaybookBtn.classList.remove('active');
         currentView = 'table';
         history.pushState(null, '', 'coverage-test');
+        updateDisplay();
+    });
+
+    viewPlaybookBtn.addEventListener('click', () => {
+        viewPlaybookBtn.classList.add('active');
+        viewGridBtn.classList.remove('active');
+        viewTableBtn.classList.remove('active');
+        currentView = 'playbook';
+        history.pushState(null, '', 'playbook');
         updateDisplay();
     });
 
@@ -319,12 +372,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal
     document.querySelector('.close-btn').onclick = () => {
         document.getElementById('modal').style.display = 'none';
+        document.body.classList.remove('no-scroll');
     };
 
     window.onclick = (event) => {
         const modal = document.getElementById('modal');
         if (event.target == modal) {
             modal.style.display = 'none';
+            document.body.classList.remove('no-scroll');
         }
     };
 });
