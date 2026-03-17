@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Extract Wallets and RSSPs from the filtered list, excluding withdrawn participants from the Matrix
         const isNotWithdrawn = c => c.technical_details && c.technical_details.endpoints_available !== 'Withdrawn';
-        const wallets = companies.filter(c => c.roles.includes('Wallet Provider') && isNotWithdrawn(c));
+        const wallets = companies.filter(c => (c.roles.includes('Wallet Provider') || c.roles.includes('CSC Client (non-wallet)')) && isNotWithdrawn(c));
         const rssps = companies.filter(c => c.roles.includes('CSC Service Provider (QTSP / RSSP)') && isNotWithdrawn(c));
 
         if (wallets.length === 0 || rssps.length === 0) {
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerHtml = `
             <thead>
                 <tr>
-                    <th class="participant-cell sticky-col" style="vertical-align: bottom;">Wallet \\ RSSP</th>
+                    <th class="participant-cell sticky-col" style="vertical-align: bottom;">Consumer \\ Provider</th>
                     ${rssps.map(r => `<th class="status-cell rssp-header" title="${r.organisation}"><div class="vertical-text">${r.organisation}</div></th>`).join('')}
                 </tr>
             </thead>
@@ -285,7 +285,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${rssps.map(rssp => {
                             const pairingKey = `${wallet.organisation}_${rssp.organisation}`;
                             const pairing = appData.pairings[pairingKey];
-                            const result = resultsData[wallet.organisation] ? resultsData[wallet.organisation][rssp.organisation] : null;
+                            
+                            // Case-insensitive result lookup
+                            const normalizedWalletName = wallet.organisation.toLowerCase();
+                            const normalizedRsspName = rssp.organisation.toLowerCase();
+                            
+                            let result = null;
+                            const resOrgKey = Object.keys(resultsData).find(k => k.toLowerCase() === normalizedWalletName);
+                            if (resOrgKey) {
+                                const resRsspKey = Object.keys(resultsData[resOrgKey]).find(k => k.toLowerCase() === normalizedRsspName);
+                                if (resRsspKey) {
+                                    result = resultsData[resOrgKey][resRsspKey];
+                                }
+                            }
                             
                             let status = 'untested';
                             let icon = '';
