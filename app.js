@@ -157,24 +157,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function renderSuccess() {
+    function hideAllViews() {
         grid.style.display = 'none';
         summaryView.style.display = 'none';
         playbookView.style.display = 'none';
         suggestionsView.style.display = 'none';
+        if (successView) successView.style.display = 'none';
+    }
+
+    function renderSuccess() {
+        hideAllViews();
         successView.style.display = 'block';
     }
 
     function renderSuggestions() {
-        grid.style.display = 'none';
-        summaryView.style.display = 'none';
-        playbookView.style.display = 'none';
+        hideAllViews();
         suggestionsView.style.display = 'block';
     }
 
     function renderPlaybook() {
-        grid.style.display = 'none';
-        summaryView.style.display = 'none';
+        hideAllViews();
         playbookView.style.display = 'block';
 
         if (!renderPlaybook.loaded) {
@@ -207,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderCompaniesGrid(companies) {
+        hideAllViews();
         grid.style.display = 'grid';
         summaryView.style.display = 'none';
         playbookView.style.display = 'none';
@@ -247,9 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderSummaryTable(companies) {
-        grid.style.display = 'none';
+        hideAllViews();
         summaryView.style.display = 'block';
-        playbookView.style.display = 'none';
 
         if (companies.length === 0) {
             summaryTable.innerHTML = '<tr><td style="text-align: center; padding: 3rem; color: var(--text-dim);">No results found.</td></tr>';

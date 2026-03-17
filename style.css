@@ -909,12 +909,18 @@ tr:hover .sticky-col {
 }
 
 .success-actions .nav-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
-    padding: 0.8rem 2rem;
+    gap: 0.6rem;
+    padding: 0.8rem 1.8rem;
     height: auto;
+    line-height: 1; /* Help with vertical alignment */
+}
+
+.success-actions .nav-btn .material-symbols-outlined {
+    font-size: 20px;
+    margin-top: -1px; /* Subtle adjustment for optical alignment if needed */
 }
 
 .text-center {
