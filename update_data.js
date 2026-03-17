@@ -112,9 +112,7 @@ const companies = registry.map((row, index) => {
     return {
         id: `org_${index}`,
         organisation: orgName,
-        contact: row['Primary Contacts'] || 'Unknown',
-        emails: row['Emails'] || '',
-        participants: (row['Participants Attending'] || '').split(/\r?\n/).map(p => p.trim()).filter(p => p),
+        participants: (row['Participants Attending'] || '').split(/\r?\n/).map(p => p.trim()).filter(p => p && !p.includes('@')),
         roles: roles,
         implementations: implementations,
         scenarios: [...new Set(mappedScenarios)],

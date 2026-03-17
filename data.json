@@ -35,8 +35,6 @@
     {
       "id": "org_0",
       "organisation": "Adobe",
-      "contact": "Andrea Valle",
-      "emails": "avalle@adobe.com",
       "participants": [
         "Andrea Valle",
         "Santhi Muthusamy"
@@ -68,12 +66,7 @@
     {
       "id": "org_1",
       "organisation": "Aruba / Actalis",
-      "contact": "Marco Pancioni",
-      "emails": "marco.pancioni@staff.aruba.it",
-      "participants": [
-        "Claudio Cheli (claudio.cheli@staff.aruba.it)",
-        "Marco Pancioni (marco.pancioni@staff.aruba.it)"
-      ],
+      "participants": [],
       "roles": [
         "Wallet Provider",
         "CSC Service Provider (QTSP / RSSP)",
@@ -105,8 +98,6 @@
     {
       "id": "org_2",
       "organisation": "Ascertia Limited",
-      "contact": "Jorge Frias",
-      "emails": "jorge.frias@ascertia.com",
       "participants": [
         "- Sven Prinsloo",
         "- Jorge Frias"
@@ -127,8 +118,6 @@
     {
       "id": "org_3",
       "organisation": "certSIGN",
-      "contact": "Ionut Ciobanu",
-      "emails": "ionut.ciobanu@certsign.ro",
       "participants": [
         "Nicolae Ghibu",
         "George Gugulea",
@@ -167,8 +156,6 @@
     {
       "id": "org_4",
       "organisation": "Cleverbase",
-      "contact": "Hidde Dorhout",
-      "emails": "hidde.dorhout@cleverbase.com",
       "participants": [
         "- Hidde Dorhout",
         "- Bob Reynders",
@@ -203,8 +190,6 @@
     {
       "id": "org_5",
       "organisation": "Docaposte Certinomis",
-      "contact": "Louis Raffin",
-      "emails": "louis.raffin@docaposte.fr",
       "participants": [
         "François CHASSERY",
         "Jean Marc DESPERRIER",
@@ -241,8 +226,6 @@
     {
       "id": "org_6",
       "organisation": "DocuSign",
-      "contact": "Andrew Mittleider",
-      "emails": "andrew.mittleider@docusign.com",
       "participants": [
         "Erika Veselova",
         "Andrew Mittleider"
@@ -271,8 +254,6 @@
     {
       "id": "org_7",
       "organisation": "EAD Trust",
-      "contact": "Eduardo Inza",
-      "emails": "eduardo.inza@eadtrust.com",
       "participants": [
         "Daniel Rontomé",
         "Bruno Valcarcel"
@@ -308,8 +289,6 @@
     {
       "id": "org_8",
       "organisation": "Entaksi",
-      "contact": "Stefano Travelli",
-      "emails": "stefano.travelli@entaksi.eu",
       "participants": [
         "Stefano Travelli, Ciro Sasso"
       ],
@@ -340,8 +319,6 @@
     {
       "id": "org_9",
       "organisation": "HARICA / GUnet",
-      "contact": "Antonios Eleftheriadis",
-      "emails": "antonisel@harica.gr",
       "participants": [
         "Konstantinos Maneadis"
       ],
@@ -372,8 +349,6 @@
     {
       "id": "org_10",
       "organisation": "iGrant",
-      "contact": "Lal Chandran",
-      "emails": "lal@igrant.io",
       "participants": [
         "Lal Chandran"
       ],
@@ -408,8 +383,6 @@
     {
       "id": "org_11",
       "organisation": "Intarsys / Procilon",
-      "contact": "Thomas Pielczyk",
-      "emails": "tpielczyk@intarsys.de",
       "participants": [
         "Thomas Pielczyk",
         "Andreas Mayer",
@@ -438,8 +411,6 @@
     {
       "id": "org_12",
       "organisation": "Intesi",
-      "contact": "Daniele Ribaudo",
-      "emails": "dribaudo@intesigroup.com",
       "participants": [
         "Daniele Ribaudo, Francesco Barcellini, Marco Monacelli"
       ],
@@ -470,8 +441,6 @@
     {
       "id": "org_13",
       "organisation": "Microsec",
-      "contact": "Balázs Czékmány",
-      "emails": "czekmany.balazs@microsec.hu",
       "participants": [
         "Balázs Czékmány",
         "László dr. Györgypál"
@@ -501,8 +470,6 @@
     {
       "id": "org_14",
       "organisation": "Namirial",
-      "contact": "Gianmario Cortese\nNicola Iovine",
-      "emails": "g.cortese@namirial.com\nn.iovine@namirial.com",
       "participants": [
         "Nicola Iovine, Gianmario Cortese",
         "---",
@@ -538,8 +505,6 @@
     {
       "id": "org_15",
       "organisation": "STS",
-      "contact": "Cristian Zaiu",
-      "emails": "cristian.zaiu@stsnet.ro",
       "participants": [
         "Calugaru Teodor",
         "Pascu Horia",
@@ -572,8 +537,6 @@
     {
       "id": "org_16",
       "organisation": "Trans Sped",
-      "contact": "Andrei Brînzea",
-      "emails": "andrei.brinzea@transsped.ro",
       "participants": [
         "Andrei Brînzea"
       ],
@@ -603,8 +566,6 @@
     {
       "id": "org_17",
       "organisation": "Able Tech",
-      "contact": "Michael Perdomini",
-      "emails": "m.perdomini@abletech.it",
       "participants": [
         "Michael Perdomini"
       ],
@@ -628,8 +589,6 @@
     {
       "id": "org_18",
       "organisation": "ANSE",
-      "contact": "Andrei Nicoara",
-      "emails": "andrei.nicoara@anse.ro",
       "participants": [
         "Andrei Nicoara"
       ],
@@ -651,8 +610,6 @@
     {
       "id": "org_19",
       "organisation": "ASEE",
-      "contact": "Marin Mihajlović\nPaskal Šimec",
-      "emails": "marin.mihajlovic@asee.io\npaskal.simec@asee.io",
       "participants": [
         "Marin Mihajlović",
         "---",
@@ -684,8 +641,6 @@
     {
       "id": "org_20",
       "organisation": "ETSI",
-      "contact": "Laurent Velez",
-      "emails": "laurent.Velez@etsi.org",
       "participants": [
         "Laurent Velez"
       ],
@@ -707,8 +662,6 @@
     {
       "id": "org_21",
       "organisation": "Evrotrust",
-      "contact": "Hristian Daskalov",
-      "emails": "hristian.daskalov@evrotrust.com",
       "participants": [
         "Mr. Hristian Daskalov - Security Compliance Director",
         "Ms. Petya Valkova - Chief Product Officer"
@@ -731,8 +684,6 @@
     {
       "id": "org_22",
       "organisation": "Ministry of Economic Affairs and Climate Policy",
-      "contact": "Rob Brand",
-      "emails": "r.p.brand@minezk.nl",
       "participants": [
         "Rob Brand"
       ],
@@ -754,8 +705,6 @@
     {
       "id": "org_23",
       "organisation": "primesign",
-      "contact": "Cornelia Bruchsteiner",
-      "emails": "cornelia.bruchsteiner@prime-sign.com",
       "participants": [
         "- Cornelia Bruchsteiner"
       ],
