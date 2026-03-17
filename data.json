@@ -183,7 +183,7 @@
         "endpoints_available": "Yes – CSC API endpoints provided",
         "technical_details": "CSC docs / endpoint: https://signing.lab.cleverbase.io/csc/v2/docs/",
         "auth_requirements": "client_id=wallet-client ; client_secret=somesecret2 ; redirect_uri=rqes://oauth/callback ; deeplink schemas eudi-openid4vp:// and openid-credential-offer:// . Flexible to change values or create new clients on the spot.",
-        "trust_anchors": "Verifier certificates shared in response for verifier implementation; wallet requires verifier certificates for presentation sharing.",
+        "trust_anchors": "-----BEGIN CERTIFICATE-----\nMIIB4DCCAYWgAwIBAgIUDT+stZtso6KpFyw25Fv9BsTvyJMwCgYIKoZIzj0EAwIw\nIjEgMB4GA1UEAxMXQ2xldmVyYmFzZSBMYWIgVmVyaWZpZXIwHhcNMjYwMzE3MTMy\nNTQzWhcNMjkwNjE1MTMyNTQzWjAiMSAwHgYDVQQDExdDbGV2ZXJiYXNlIExhYiBW\nZXJpZmllcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLazRk1X77TnjMl4b0t4\nKM4774H5WJxJndVCtgolLJjc4+edfC3QIwhHU1eJSrMlLvviubk95F4gA6bfDoGn\nZHOjgZgwgZUwHQYDVR0OBBYEFF/xxMHyB2FGhWixOQi7qTCrFONlMB8GA1UdIwQY\nMBaAFF/xxMHyB2FGhWixOQi7qTCrFONlMC8GA1UdEQQoMCaCCWxvY2FsaG9zdIIZ\nc2lnbmluZy5sYWIuY2xldmVyYmFzZS5pbzAOBgNVHQ8BAf8EBAMCBaAwEgYDVR0l\nBAswCQYHKIGMXQUBBjAKBggqhkjOPQQDAgNJADBGAiEAp0WrdpTJPh8hGQQkqmgM\n1EHa1ANbhHRlEATACQBWIssCIQCPYGcCBNFgjJS9fmKWJRq/t71BPWe+MwftrDpN\n0zuBuA==\n-----END CERTIFICATE-----",
         "technical_constraints": "- Authorization flow requires PID presentation;\n- We have a test wallet for this event; \n   -  This wallet requires verifier certificates to be able to share credential presentations\n   - To interop with other RSSPs, client credentials need to be build into the wallet\nAuthorization flow requires PID presentation."
       }
     },
@@ -290,19 +290,16 @@
       "id": "org_8",
       "organisation": "Entaksi",
       "participants": [
-        "Stefano Travelli",
-        "Ciro Sasso + 1"
+        "Stefano Travelli, Ciro Sasso"
       ],
       "roles": [
         "CSC Service Provider (QTSP / RSSP)",
-        "CSC Client (non-wallet)",
         "Relying Party / Verifier"
       ],
       "implementations": [
-        "CSC API v2.2 (test)",
-        "CSC API v2.0 (prod)",
+        "CSC API v2.2.0 environment online",
         "RP / verifier identity broker based on Keycloak",
-        "Credential Lifecycle: Create/Delete supported"
+        "can provide wallet client_ids."
       ],
       "scenarios": [
         "API-01",
@@ -313,10 +310,10 @@
       ],
       "technical_details": {
         "endpoints_available": "Yes",
-        "technical_details": "CSC base: https://dev.entaksi.eu/tsp/api/v1/ ; OIDC well-known: https://dev.entaksi.eu/auth/realms/edoc/.well-known/openid-configuration ; Endpoints: list, info, signHash, signDoc, create, delete",
-        "auth_requirements": "Keycloak (OIDC Broker); Supports PAR + authorization_details. Can issue wallet client_ids.",
+        "technical_details": "CSC base: https://dev.entaksi.eu/tsp/api/v1/ ; OIDC well-known: https://dev.entaksi.eu/auth/realms/edoc/.well-known/openid-configuration ; CSC APIs under /csc/v2 including credentials/list, credentials/info, signatures/signHash, signatures/signDoc, credentials/create, credentials/delete",
+        "auth_requirements": "Can issue one or more wallet client_ids. Redirect URI format for brokered IdP: https://dev.entaksi.eu/auth/realms/edoc/broker/walletX/endpoint . Supports PAR and authorize URL parameter flow.",
         "trust_anchors": "Needs external IdP endpoints and public keys for broker configuration.",
-        "technical_constraints": "Cryptomathic SAM; Utimaco HSM; Full control env. Available early; flexible setup; strong auth flows."
+        "technical_constraints": "SubjectData currently expects eidas_person_identifier for credential creation where applicable; API-01 should include subject authentication; supports PAR and authorize URL parameter flow."
       }
     },
     {
@@ -879,10 +876,6 @@
     "Namirial_Microsec": {
       "status": "Recommended",
       "notes": "Client to provider interoperability"
-    },
-    "Namirial_Entaksi": {
-      "status": "Recommended",
-      "notes": "Wallet-based provider interoperability"
     },
     "Namirial_Adobe": {
       "status": "Recommended",

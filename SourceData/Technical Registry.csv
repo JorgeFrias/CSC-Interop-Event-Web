@@ -21,7 +21,19 @@ Evidence will be provided for all the flows and all the calls in all available s
 Environment inside corporate VPN; time-limited feasibility for external integrations.",Cleverbase; Namirial; Entaksi; STS (conditional on IP access); EAD Trust; Intesi,,Yes,,Prepared from orchestration workbook and received replies,
 Cleverbase,Cleverbase,Hidde Dorhout,hidde.dorhout@cleverbase.com,"- Hidde Dorhout
 - Bob Reynders
-- Josh Cohen",Active Participant,Yes,Replied,Active tester,Yes,Yes,Yes,Yes,Yes,No,Externally reachable with coordination,Trust / cert exchange; OAuth / redirect setup,"Full stack implementation: Wallet, CSC Provider, CSC Client, Verifier and credential issuance/testing endpoints. Provides CSC endpoints for interoperability testing.",Needs verifier certificates in advance; needs CSC client credentials / config exchanged; wants connection to other wallet providers and CSC providers.,Connect Cleverbase with wallet providers; gather verifier certificates and CSC client credentials in advance.,Yes – CSC API endpoints provided,CSC docs / endpoint: https://signing.lab.cleverbase.io/csc/v2/docs/,client_id=wallet-client ; client_secret=somesecret2 ; redirect_uri=rqes://oauth/callback ; deeplink schemas eudi-openid4vp:// and openid-credential-offer:// . Flexible to change values or create new clients on the spot.,Verifier certificates shared in response for verifier implementation; wallet requires verifier certificates for presentation sharing.,"- Authorization flow requires PID presentation;
+- Josh Cohen",Active Participant,Yes,Replied,Active tester,Yes,Yes,Yes,Yes,Yes,No,Externally reachable with coordination,Trust / cert exchange; OAuth / redirect setup,"Full stack implementation: Wallet, CSC Provider, CSC Client, Verifier and credential issuance/testing endpoints. Provides CSC endpoints for interoperability testing.",Needs verifier certificates in advance; needs CSC client credentials / config exchanged; wants connection to other wallet providers and CSC providers.,Connect Cleverbase with wallet providers; gather verifier certificates and CSC client credentials in advance.,Yes – CSC API endpoints provided,CSC docs / endpoint: https://signing.lab.cleverbase.io/csc/v2/docs/,client_id=wallet-client ; client_secret=somesecret2 ; redirect_uri=rqes://oauth/callback ; deeplink schemas eudi-openid4vp:// and openid-credential-offer:// . Flexible to change values or create new clients on the spot.,"-----BEGIN CERTIFICATE-----
+MIIB4DCCAYWgAwIBAgIUDT+stZtso6KpFyw25Fv9BsTvyJMwCgYIKoZIzj0EAwIw
+IjEgMB4GA1UEAxMXQ2xldmVyYmFzZSBMYWIgVmVyaWZpZXIwHhcNMjYwMzE3MTMy
+NTQzWhcNMjkwNjE1MTMyNTQzWjAiMSAwHgYDVQQDExdDbGV2ZXJiYXNlIExhYiBW
+ZXJpZmllcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLazRk1X77TnjMl4b0t4
+KM4774H5WJxJndVCtgolLJjc4+edfC3QIwhHU1eJSrMlLvviubk95F4gA6bfDoGn
+ZHOjgZgwgZUwHQYDVR0OBBYEFF/xxMHyB2FGhWixOQi7qTCrFONlMB8GA1UdIwQY
+MBaAFF/xxMHyB2FGhWixOQi7qTCrFONlMC8GA1UdEQQoMCaCCWxvY2FsaG9zdIIZ
+c2lnbmluZy5sYWIuY2xldmVyYmFzZS5pbzAOBgNVHQ8BAf8EBAMCBaAwEgYDVR0l
+BAswCQYHKIGMXQUBBjAKBggqhkjOPQQDAgNJADBGAiEAp0WrdpTJPh8hGQQkqmgM
+1EHa1ANbhHRlEATACQBWIssCIQCPYGcCBNFgjJS9fmKWJRq/t71BPWe+MwftrDpN
+0zuBuA==
+-----END CERTIFICATE-----","- Authorization flow requires PID presentation;
 - We have a test wallet for this event; 
    -  This wallet requires verifier certificates to be able to share credential presentations
    - To interop with other RSSPs, client credentials need to be build into the wallet

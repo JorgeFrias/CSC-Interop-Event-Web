@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div class="tech-detail-item" style="margin-bottom: 1.5rem;">
                         <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Trust & Certificates</span>
-                        <p style="margin-top: 0.25rem; font-size: 0.9rem;">${tech.trust_anchors || 'Standard QTSP chain'}</p>
+                        <pre style="margin-top: 0.5rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0.5rem; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap;">${tech.trust_anchors || 'Standard QTSP chain'}</pre>
                     </div>
 
                     ${tech.technical_constraints ? `
