@@ -432,8 +432,8 @@
       ],
       "technical_details": {
         "endpoints_available": "Yes / externally reachable",
-        "technical_details": "Awaiting exact endpoint URLs; external endpoint available for client/provider interoperability",
-        "auth_requirements": "OAuth",
+        "technical_details": "CSC API base URL: https://csc.test4mind.com/csc/v2/ ; CSC Client for testing: https://csc.int4mind.com/test/",
+        "auth_requirements": "OAuth2; client_id / client_secret required; Authorization Code or Client Credentials flow",
         "trust_anchors": "Credentials / certificate details to be provided during event if needed",
         "technical_constraints": "Supports CSC API 2.2.0; some scenarios may be limited"
       }
