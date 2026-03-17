@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const APP_VERSION = '1.1.0';
+    console.log(`CSC Event Wallet v${APP_VERSION} initialized`);
     let resultsData = {}; // From CSV: { "Org Name": { "API-01": "Pass", ... } }
     let appData = { scenarios: [], companies: [] };
     let currentFilter = 'all';
