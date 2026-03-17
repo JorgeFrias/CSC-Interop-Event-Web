@@ -242,9 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Extract Wallets and RSSPs from the filtered list
-        const wallets = companies.filter(c => c.roles.includes('Wallet Provider'));
-        const rssps = companies.filter(c => c.roles.includes('CSC Service Provider (QTSP / RSSP)'));
+        // Extract Wallets and RSSPs from the filtered list, excluding withdrawn participants from the Matrix
+        const isNotWithdrawn = c => c.technical_details && c.technical_details.endpoints_available !== 'Withdrawn';
+        const wallets = companies.filter(c => c.roles.includes('Wallet Provider') && isNotWithdrawn(c));
+        const rssps = companies.filter(c => c.roles.includes('CSC Service Provider (QTSP / RSSP)') && isNotWithdrawn(c));
 
         if (wallets.length === 0 || rssps.length === 0) {
             summaryTable.innerHTML = '<tr><td style="text-align: center; padding: 3rem; color: var(--text-dim);">Not enough participants to form a matrix (need both Wallets and RSSPs in the current view).</td></tr>';
