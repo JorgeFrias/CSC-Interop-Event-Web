@@ -35,6 +35,7 @@
     {
       "id": "org_0",
       "organisation": "Adobe",
+      "contact": "Andrea Valle",
       "participants": [
         "Andrea Valle",
         "Santhi Muthusamy"
@@ -66,7 +67,11 @@
     {
       "id": "org_1",
       "organisation": "Aruba / Actalis",
-      "participants": [],
+      "contact": "Marco Pancioni",
+      "participants": [
+        "Claudio Cheli",
+        "Marco Pancioni"
+      ],
       "roles": [
         "Wallet Provider",
         "CSC Service Provider (QTSP / RSSP)",
@@ -98,6 +103,7 @@
     {
       "id": "org_2",
       "organisation": "Ascertia Limited",
+      "contact": "Jorge Frias",
       "participants": [
         "- Sven Prinsloo",
         "- Jorge Frias"
@@ -118,6 +124,7 @@
     {
       "id": "org_3",
       "organisation": "certSIGN",
+      "contact": "Ionut Ciobanu",
       "participants": [
         "Nicolae Ghibu",
         "George Gugulea",
@@ -156,6 +163,7 @@
     {
       "id": "org_4",
       "organisation": "Cleverbase",
+      "contact": "Hidde Dorhout",
       "participants": [
         "- Hidde Dorhout",
         "- Bob Reynders",
@@ -190,6 +198,7 @@
     {
       "id": "org_5",
       "organisation": "Docaposte Certinomis",
+      "contact": "Louis Raffin",
       "participants": [
         "François CHASSERY",
         "Jean Marc DESPERRIER",
@@ -226,6 +235,7 @@
     {
       "id": "org_6",
       "organisation": "DocuSign",
+      "contact": "Andrew Mittleider",
       "participants": [
         "Erika Veselova",
         "Andrew Mittleider"
@@ -254,6 +264,7 @@
     {
       "id": "org_7",
       "organisation": "EAD Trust",
+      "contact": "Eduardo Inza",
       "participants": [
         "Daniel Rontomé",
         "Bruno Valcarcel"
@@ -289,6 +300,7 @@
     {
       "id": "org_8",
       "organisation": "Entaksi",
+      "contact": "Stefano Travelli",
       "participants": [
         "Stefano Travelli, Ciro Sasso"
       ],
@@ -319,6 +331,7 @@
     {
       "id": "org_9",
       "organisation": "HARICA / GUnet",
+      "contact": "Antonios Eleftheriadis",
       "participants": [
         "Konstantinos Maneadis"
       ],
@@ -349,6 +362,7 @@
     {
       "id": "org_10",
       "organisation": "iGrant",
+      "contact": "Lal Chandran",
       "participants": [
         "Lal Chandran"
       ],
@@ -383,6 +397,7 @@
     {
       "id": "org_11",
       "organisation": "Intarsys / Procilon",
+      "contact": "Thomas Pielczyk",
       "participants": [
         "Thomas Pielczyk",
         "Andreas Mayer",
@@ -411,6 +426,7 @@
     {
       "id": "org_12",
       "organisation": "Intesi",
+      "contact": "Daniele Ribaudo",
       "participants": [
         "Daniele Ribaudo, Francesco Barcellini, Marco Monacelli"
       ],
@@ -441,6 +457,7 @@
     {
       "id": "org_13",
       "organisation": "Microsec",
+      "contact": "Balázs Czékmány",
       "participants": [
         "Balázs Czékmány",
         "László dr. Györgypál"
@@ -470,6 +487,7 @@
     {
       "id": "org_14",
       "organisation": "Namirial",
+      "contact": "Gianmario Cortese\nNicola Iovine",
       "participants": [
         "Nicola Iovine, Gianmario Cortese",
         "---",
@@ -505,6 +523,7 @@
     {
       "id": "org_15",
       "organisation": "STS",
+      "contact": "Cristian Zaiu",
       "participants": [
         "Calugaru Teodor",
         "Pascu Horia",
@@ -537,6 +556,7 @@
     {
       "id": "org_16",
       "organisation": "Trans Sped",
+      "contact": "Andrei Brînzea",
       "participants": [
         "Andrei Brînzea"
       ],
@@ -566,6 +586,7 @@
     {
       "id": "org_17",
       "organisation": "Able Tech",
+      "contact": "Michael Perdomini",
       "participants": [
         "Michael Perdomini"
       ],
@@ -589,6 +610,7 @@
     {
       "id": "org_18",
       "organisation": "ANSE",
+      "contact": "Andrei Nicoara",
       "participants": [
         "Andrei Nicoara"
       ],
@@ -610,6 +632,7 @@
     {
       "id": "org_19",
       "organisation": "ASEE",
+      "contact": "Marin Mihajlović\nPaskal Šimec",
       "participants": [
         "Marin Mihajlović",
         "---",
@@ -641,6 +664,7 @@
     {
       "id": "org_20",
       "organisation": "ETSI",
+      "contact": "Laurent Velez",
       "participants": [
         "Laurent Velez"
       ],
@@ -662,6 +686,7 @@
     {
       "id": "org_21",
       "organisation": "Evrotrust",
+      "contact": "Hristian Daskalov",
       "participants": [
         "Mr. Hristian Daskalov - Security Compliance Director",
         "Ms. Petya Valkova - Chief Product Officer"
@@ -684,6 +709,7 @@
     {
       "id": "org_22",
       "organisation": "Ministry of Economic Affairs and Climate Policy",
+      "contact": "Rob Brand",
       "participants": [
         "Rob Brand"
       ],
@@ -705,6 +731,7 @@
     {
       "id": "org_23",
       "organisation": "primesign",
+      "contact": "Cornelia Bruchsteiner",
       "participants": [
         "- Cornelia Bruchsteiner"
       ],

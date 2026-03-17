@@ -140,16 +140,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = {};
 
         for (let i = 1; i < lines.length; i++) {
-            // Basic CSV parsing (handles quotes)
-            const row = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-            if (!row) continue;
+            const line = lines[i].trim();
+            if (!line) continue;
+            
+            // More robust CSV parsing that handles empty fields
+            const row = [];
+            let inQuotes = false;
+            let current = '';
+            
+            for (let j = 0; j < line.length; j++) {
+                const char = line[j];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    row.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            row.push(current.trim());
+            
+            if (row.length < headers.length) continue;
             
             const orgData = {};
             const orgName = row[0].replace(/"/g, '').trim();
             
             headers.forEach((header, index) => {
-                if (index > 0 && index < headers.length - 1) { // Scenario columns
-                    orgData[header] = row[index].trim();
+                if (index > 0 && index < headers.length - 1) { // Scenario or partner columns
+                    orgData[header] = row[index];
                 }
             });
             data[orgName] = orgData;
@@ -247,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const term = searchInput.value.toLowerCase();
         return companies.filter(c => {
             const matchesSearch = c.organisation.toLowerCase().includes(term) || 
-                                 c.contact.toLowerCase().includes(term) ||
+                                 (c.contact || '').toLowerCase().includes(term) ||
                                  c.participants.some(p => p.toLowerCase().includes(term));
             
             if (!matchesSearch) return false;
