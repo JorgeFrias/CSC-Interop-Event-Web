@@ -18,8 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewTableBtn = document.getElementById('viewTable');
     const viewPlaybookBtn = document.getElementById('viewPlaybook');
     const viewSuggestionsBtn = document.getElementById('viewSuggestions');
+    const viewSubmitResultsBtn = document.getElementById('viewSubmitResults');
     const playbookView = document.getElementById('playbookView');
     const suggestionsView = document.getElementById('suggestionsView');
+    const submitResultsView = document.getElementById('submitResultsView');
     const successView = document.getElementById('successView');
     const playbookContent = document.querySelector('.playbook-content');
     const filterGroup = document.querySelector('.filter-group');
@@ -79,6 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
             viewGridBtn.classList.remove('active');
             viewTableBtn.classList.remove('active');
             viewPlaybookBtn.classList.remove('active');
+        } else if (path.endsWith('/submit-results') || searchParams.has('view') && searchParams.get('view') === 'submit') {
+            currentView = 'submitResults';
+            viewSubmitResultsBtn.classList.add('active');
+            viewGridBtn.classList.remove('active');
+            viewTableBtn.classList.remove('active');
+            viewPlaybookBtn.classList.remove('active');
+            viewSuggestionsBtn.classList.remove('active');
         } else {
             // Default to playbook for / or any other path
             currentView = 'playbook';
@@ -151,6 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentView === 'suggestions') {
             controls.style.display = 'none';
             renderSuggestions();
+        } else if (currentView === 'submitResults') {
+            controls.style.display = 'none';
+            renderSubmitResults();
         } else if (currentView === 'success') {
             controls.style.display = 'none';
             renderSuccess();
@@ -162,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         summaryView.style.display = 'none';
         playbookView.style.display = 'none';
         suggestionsView.style.display = 'none';
+        submitResultsView.style.display = 'none';
         if (successView) successView.style.display = 'none';
     }
 
@@ -173,6 +186,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSuggestions() {
         hideAllViews();
         suggestionsView.style.display = 'block';
+    }
+
+    function renderSubmitResults() {
+        hideAllViews();
+        submitResultsView.style.display = 'block';
+
+        const member1Select = document.getElementById('member1');
+        const member2Select = document.getElementById('member2');
+
+        if (member1Select.options.length <= 1) { // Only populate if empty (first option is the placeholder)
+            const sortedCompanies = [...appData.companies].sort((a, b) => a.organisation.localeCompare(b.organisation));
+            
+            sortedCompanies.forEach(company => {
+                const opt1 = document.createElement('option');
+                opt1.value = company.organisation;
+                opt1.textContent = company.organisation;
+                member1Select.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = company.organisation;
+                opt2.textContent = company.organisation;
+                member2Select.appendChild(opt2);
+            });
+        }
     }
 
     function renderPlaybook() {
@@ -461,7 +498,6 @@ document.addEventListener('DOMContentLoaded', () => {
         history.pushState(null, '', 'playbook');
         updateDisplay();
     });
-
     viewSuggestionsBtn.addEventListener('click', () => {
         viewSuggestionsBtn.classList.add('active');
         viewGridBtn.classList.remove('active');
@@ -469,6 +505,17 @@ document.addEventListener('DOMContentLoaded', () => {
         viewPlaybookBtn.classList.remove('active');
         currentView = 'suggestions';
         history.pushState(null, '', 'suggestions');
+        updateDisplay();
+    });
+
+    viewSubmitResultsBtn.addEventListener('click', () => {
+        viewSubmitResultsBtn.classList.add('active');
+        viewGridBtn.classList.remove('active');
+        viewTableBtn.classList.remove('active');
+        viewPlaybookBtn.classList.remove('active');
+        viewSuggestionsBtn.classList.remove('active');
+        currentView = 'submitResults';
+        history.pushState(null, '', 'submit-results');
         updateDisplay();
     });
 

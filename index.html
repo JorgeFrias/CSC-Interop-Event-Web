@@ -32,6 +32,7 @@
                 <button class="nav-btn" id="viewPlaybook">Event Playbook</button>
                 <button class="nav-btn" id="viewGrid">Participant Directory</button>
                 <button class="nav-btn" id="viewTable">Interoperability Matrix</button>
+                <button class="nav-btn" id="viewSubmitResults">Submit Test Result</button>
                 <button class="nav-btn" id="viewSuggestions">Suggestions Box</button>
                 <button class="nav-icon-btn" id="sharePage" title="Share Page (QR Code)">
                     <span class="material-symbols-outlined">qr_code_2</span>
@@ -169,6 +170,73 @@
                     </button>
                     
                     <p class="form-note">Submissions are processed via Formspree. You will receive a confirmation email.</p>
+                </form>
+            </div>
+        </section>
+
+        <section id="submitResultsView" class="suggestions-view" style="display: none;">
+            <div class="suggestions-content card glass">
+                <div class="form-header">
+                    <h2 class="glow-text">Submit Test Results</h2>
+                    <p class="subtitle">Record interop results from the technical validation sessions.</p>
+                </div>
+                
+                <form action="https://formspree.io/f/xnjgovqy" method="POST" id="testResultForm" class="feedback-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="member1">Member 1</label>
+                            <select id="member1" name="member1" required>
+                                <option value="" disabled selected>Select Member 1...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="role1">Role represented</label>
+                            <select id="role1" name="role1" required>
+                                <option value="" disabled selected>Select role...</option>
+                                <option value="Consumer (Wallet)">Consumer (Wallet)</option>
+                                <option value="Provider (API)">Provider (API)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="member2">Member 2</label>
+                            <select id="member2" name="member2" required>
+                                <option value="" disabled selected>Select Member 2...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="role2">Role represented</label>
+                            <select id="role2" name="role2" required>
+                                <option value="" disabled selected>Select role...</option>
+                                <option value="Consumer (Wallet)">Consumer (Wallet)</option>
+                                <option value="Provider (API)">Provider (API)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testStatus">Test Status</label>
+                        <select id="testStatus" name="status" required>
+                            <option value="" disabled selected>Select status...</option>
+                            <option value="Pass">Pass: Full Interop</option>
+                            <option value="Partial">Partial: Warnings</option>
+                            <option value="Issue">Issue Detected</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="testDetails">Test Details & Observations</label>
+                        <textarea id="testDetails" name="details" rows="5" placeholder="Provide any technical details, logs, or observations from the test..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn active">
+                        <span class="material-symbols-outlined">task_alt</span>
+                        <span>Submit Results</span>
+                    </button>
+                    
+                    <p class="form-note">Results will be reviewed and updated in the Interoperability Matrix.</p>
                 </form>
             </div>
         </section>
