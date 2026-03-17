@@ -1,12 +1,12 @@
 Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Role
-"intarsys GmbH / procilon GROUP GmbH",Pass,Pass,Pass,Pass,Pass,Untested,RSSP/QTSP
-"Entaksi Solutions SpA",Pass,Pass,Pass,Pass,Pass,Partial,RSSP/QTSP
+"Intarsys / Procilon",Pass,Pass,Pass,Pass,Pass,Untested,RSSP/QTSP
+"Entaksi",Pass,Pass,Pass,Pass,Pass,Partial,RSSP/QTSP
 "Evrotrust Technologies AD",Untested,Untested,Untested,Untested,Untested,Untested,Observer
-"Aruba Pec/Actalis",Pass,Pass,Pass,Pass,Pass,Pass,Wallet
+"Aruba / Actalis",Pass,Pass,Pass,Pass,Pass,Pass,Wallet
 "STS",Pass,Pass,Pass,Pass,Pass,Untested,RSSP/QTSP
-"certSIGN S.A.",Pass,Pass,Pass,Pass,Issue,Pass,Wallet
+"certSIGN",Pass,Pass,Pass,Pass,Issue,Pass,Wallet
 "EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,RSSP/QTSP
-"Intesi Group",Pass,Pass,Pass,Issue,Pass,Untested,RSSP/QTSP
+"Intesi",Pass,Pass,Pass,Issue,Pass,Untested,RSSP/QTSP
 "primesign",Untested,Untested,Untested,Untested,Untested,Untested,Observer
 "Cleverbase",Pass,Pass,Pass,Pass,Pass,Pass,RSSP/QTSP
 "Adobe",Pass,Pass,Pass,Pass,Partial,Untested,Client

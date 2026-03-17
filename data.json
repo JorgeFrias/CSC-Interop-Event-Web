@@ -290,16 +290,19 @@
       "id": "org_8",
       "organisation": "Entaksi",
       "participants": [
-        "Stefano Travelli, Ciro Sasso"
+        "Stefano Travelli",
+        "Ciro Sasso + 1"
       ],
       "roles": [
         "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
         "Relying Party / Verifier"
       ],
       "implementations": [
-        "CSC API v2.2.0 environment online",
+        "CSC API v2.2 (test)",
+        "CSC API v2.0 (prod)",
         "RP / verifier identity broker based on Keycloak",
-        "can provide wallet client_ids."
+        "Credential Lifecycle: Create/Delete supported"
       ],
       "scenarios": [
         "API-01",
@@ -310,10 +313,10 @@
       ],
       "technical_details": {
         "endpoints_available": "Yes",
-        "technical_details": "CSC base: https://dev.entaksi.eu/tsp/api/v1/ ; OIDC well-known: https://dev.entaksi.eu/auth/realms/edoc/.well-known/openid-configuration ; CSC APIs under /csc/v2 including credentials/list, credentials/info, signatures/signHash, signatures/signDoc, credentials/create, credentials/delete",
-        "auth_requirements": "Can issue one or more wallet client_ids. Redirect URI format for brokered IdP: https://dev.entaksi.eu/auth/realms/edoc/broker/walletX/endpoint . Supports PAR and authorize URL parameter flow.",
+        "technical_details": "CSC base: https://dev.entaksi.eu/tsp/api/v1/ ; OIDC well-known: https://dev.entaksi.eu/auth/realms/edoc/.well-known/openid-configuration ; Endpoints: list, info, signHash, signDoc, create, delete",
+        "auth_requirements": "Keycloak (OIDC Broker); Supports PAR + authorization_details. Can issue wallet client_ids.",
         "trust_anchors": "Needs external IdP endpoints and public keys for broker configuration.",
-        "technical_constraints": "SubjectData currently expects eidas_person_identifier for credential creation where applicable; API-01 should include subject authentication; supports PAR and authorize URL parameter flow."
+        "technical_constraints": "Cryptomathic SAM; Utimaco HSM; Full control env. Available early; flexible setup; strong auth flows."
       }
     },
     {
