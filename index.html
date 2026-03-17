@@ -32,6 +32,7 @@
                 <button class="nav-btn" id="viewPlaybook">Event Playbook</button>
                 <button class="nav-btn" id="viewGrid">Participant Directory</button>
                 <button class="nav-btn" id="viewTable">Interoperability Matrix</button>
+                <button class="nav-btn" id="viewSuggestions">Suggestions Box</button>
                 <button class="nav-icon-btn" id="sharePage" title="Share Page (QR Code)">
                     <span class="material-symbols-outlined">qr_code_2</span>
                     <span>Share</span>
@@ -111,6 +112,64 @@
                     <div class="spinner"></div>
                     <p>Loading playbook...</p>
                 </div>
+            </div>
+        </section>
+
+        <section id="suggestionsView" class="suggestions-view" style="display: none;">
+            <div class="suggestions-content card glass">
+                <div class="form-header">
+                    <h2 class="glow-text">Suggestions Box</h2>
+                    <p class="subtitle">Have feedback on the CSC specification or APIs? We'd love to hear it!</p>
+                </div>
+                
+                <form action="https://formspree.io/f/mqeygaqb" method="POST" id="suggestionForm" class="feedback-form" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="participantName">Name / Organisation</label>
+                            <input type="text" id="participantName" name="name" placeholder="Your name or organisation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="participantEmail">Email Address</label>
+                            <input type="email" id="participantEmail" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackType">Feedback Category</label>
+                        <select id="feedbackType" name="category" required>
+                            <option value="" disabled selected>Select a category...</option>
+                            <option value="General">General Feedback</option>
+                            <option value="CSC Spec">CSC Specification Issues</option>
+                            <option value="API">API Implementation Feedback</option>
+                            <option value="Metadata">Metadata & Registry</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suggestion">Your Message</label>
+                        <textarea id="suggestion" name="message" rows="5" placeholder="Describe your suggestion or feedback in detail..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fileUpload">Attach a file (optional)</label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="fileUpload" name="attachment" class="file-input">
+                            <div class="file-input-custom">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose a file...</span>
+                            </div>
+                        </div>
+                        <p class="field-note">Maximum size: 10MB. Supported formats: PDF, PNG, JPG, ZIP, etc.</p>
+                    </div>
+
+                    <button type="submit" class="submit-btn active">
+                        <span class="material-symbols-outlined">send</span>
+                        <span>Submit Feedback</span>
+                    </button>
+                    
+                    <p class="form-note">Submissions are processed via Formspree. You will receive a confirmation email.</p>
+                </form>
             </div>
         </section>
     </main>

@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewGridBtn = document.getElementById('viewGrid');
     const viewTableBtn = document.getElementById('viewTable');
     const viewPlaybookBtn = document.getElementById('viewPlaybook');
+    const viewSuggestionsBtn = document.getElementById('viewSuggestions');
     const playbookView = document.getElementById('playbookView');
+    const suggestionsView = document.getElementById('suggestionsView');
     const playbookContent = document.querySelector('.playbook-content');
     const filterGroup = document.querySelector('.filter-group');
     const controls = document.querySelector('.controls');
@@ -65,12 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
             viewGridBtn.classList.add('active');
             viewTableBtn.classList.remove('active');
             viewPlaybookBtn.classList.remove('active');
+            viewSuggestionsBtn.classList.remove('active');
+        } else if (path.endsWith('/suggestions') || searchParams.has('view') && searchParams.get('view') === 'suggestions') {
+            currentView = 'suggestions';
+            viewSuggestionsBtn.classList.add('active');
+            viewGridBtn.classList.remove('active');
+            viewTableBtn.classList.remove('active');
+            viewPlaybookBtn.classList.remove('active');
         } else {
             // Default to playbook for / or any other path
             currentView = 'playbook';
             viewPlaybookBtn.classList.add('active');
             viewGridBtn.classList.remove('active');
             viewTableBtn.classList.remove('active');
+            viewSuggestionsBtn.classList.remove('active');
         }
     }
 
@@ -133,7 +143,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentView === 'playbook') {
             controls.style.display = 'none';
             renderPlaybook();
+        } else if (currentView === 'suggestions') {
+            controls.style.display = 'none';
+            renderSuggestions();
         }
+    }
+
+    function renderSuggestions() {
+        grid.style.display = 'none';
+        summaryView.style.display = 'none';
+        playbookView.style.display = 'none';
+        suggestionsView.style.display = 'block';
     }
 
     function renderPlaybook() {
@@ -358,8 +378,19 @@ document.addEventListener('DOMContentLoaded', () => {
         viewPlaybookBtn.classList.add('active');
         viewGridBtn.classList.remove('active');
         viewTableBtn.classList.remove('active');
+        viewSuggestionsBtn.classList.remove('active');
         currentView = 'playbook';
         history.pushState(null, '', 'playbook');
+        updateDisplay();
+    });
+
+    viewSuggestionsBtn.addEventListener('click', () => {
+        viewSuggestionsBtn.classList.add('active');
+        viewGridBtn.classList.remove('active');
+        viewTableBtn.classList.remove('active');
+        viewPlaybookBtn.classList.remove('active');
+        currentView = 'suggestions';
+        history.pushState(null, '', 'suggestions');
         updateDisplay();
     });
 
@@ -371,44 +402,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Share Page (QR Code) logic
     const sharePageBtn = document.getElementById('sharePage');
-    sharePageBtn.addEventListener('click', () => {
-        const modal = document.getElementById('modal');
-        const body = document.getElementById('modalBody');
-        
-        body.innerHTML = `
-            <div class="qr-container">
-                <h2 class="glow-text" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Share this page</h2>
-                <p style="color: var(--text-dim); margin-bottom: 2rem;">Scan this code to open the current view on another device.</p>
-                <div id="qrcode" class="qrcode-wrapper glass"></div>
-                <div class="copy-link-wrapper" style="margin-top: 2rem; width: 100%;">
-                    <div class="search-box" style="display: flex; gap: 0.5rem;">
-                        <input type="text" id="shareUrl" value="${window.location.href}" readonly style="flex: 1;">
-                        <button id="copyUrlBtn" class="nav-btn active" style="padding: 0 1.5rem;">Copy</button>
+    if (sharePageBtn) {
+        sharePageBtn.addEventListener('click', () => {
+            const modal = document.getElementById('modal');
+            const body = document.getElementById('modalBody');
+            
+            body.innerHTML = `
+                <div class="qr-container">
+                    <h2 class="glow-text" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Share this page</h2>
+                    <p style="color: var(--text-dim); margin-bottom: 2rem;">Scan this code to open the current view on another device.</p>
+                    <div id="qrcode" class="qrcode-wrapper glass"></div>
+                    <div class="copy-link-wrapper" style="margin-top: 2rem; width: 100%;">
+                        <div class="search-box" style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="shareUrl" value="${window.location.href}" readonly style="flex: 1;">
+                            <button id="copyUrlBtn" class="nav-btn active" style="padding: 0 1.5rem;">Copy</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
 
-        modal.style.display = 'block';
-        document.body.classList.add('no-scroll');
+            modal.style.display = 'block';
+            document.body.classList.add('no-scroll');
 
-        // Generate QR Code
-        new QRCode(document.getElementById("qrcode"), {
-            text: window.location.href,
-            width: 256,
-            height: 256,
-            colorDark : "#6366f1",
-            colorLight : "transparent",
-            correctLevel : QRCode.CorrectLevel.H
+            // Generate QR Code
+            new QRCode(document.getElementById("qrcode"), {
+                text: window.location.href,
+                width: 256,
+                height: 256,
+                colorDark : "#6366f1",
+                colorLight : "transparent",
+                correctLevel : QRCode.CorrectLevel.H
+            });
         });
+    }
 
-        // Copy functionality
-        const copyBtn = document.getElementById('copyUrlBtn');
-        copyBtn.addEventListener('click', () => {
+    // File Upload State Logic
+    const fileInput = document.getElementById('fileUpload');
+    const fileInputCustom = document.querySelector('.file-input-custom span');
+
+    if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files && e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                fileInputCustom.textContent = fileName;
+                fileInputCustom.parentElement.style.borderColor = 'var(--accent-color)';
+                fileInputCustom.parentElement.style.background = 'rgba(110, 89, 255, 0.1)'; // Hardcoded fallback for reliability
+            } else {
+                fileInputCustom.textContent = 'Choose a file...';
+                fileInputCustom.parentElement.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                fileInputCustom.parentElement.style.background = 'rgba(255, 255, 255, 0.05)';
+            }
+        });
+    }
+
+    // Share Url Copy functionality (Event Delegation for modal button)
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'copyUrlBtn') {
             const urlInput = document.getElementById('shareUrl');
             urlInput.select();
             document.execCommand('copy');
             
+            const copyBtn = e.target;
             const originalText = copyBtn.textContent;
             copyBtn.textContent = 'Copied!';
             copyBtn.style.background = 'var(--core-color)';
@@ -417,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 copyBtn.textContent = originalText;
                 copyBtn.style.background = '';
             }, 2000);
-        });
+        }
     });
 
     // Close modal
