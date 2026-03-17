@@ -877,6 +877,10 @@
       "status": "Recommended",
       "notes": "Client to provider interoperability"
     },
+    "Namirial_Entaksi": {
+      "status": "Recommended",
+      "notes": "Wallet-based provider interoperability"
+    },
     "Namirial_Adobe": {
       "status": "Recommended",
       "notes": "Client to provider interoperability"
