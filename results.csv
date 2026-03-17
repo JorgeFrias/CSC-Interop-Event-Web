@@ -1,24 +1,24 @@
-Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Intesi,Role
-"Intarsys / Procilon",Pass,Pass,Pass,Pass,Pass,Untested,,RSSP/QTSP
-"Entaksi",Pass,Pass,Pass,Pass,Pass,Partial,,RSSP/QTSP
-"Evrotrust Technologies AD",Untested,Untested,Untested,Untested,Untested,Untested,,Observer
-"Aruba / Actalis",Pass,Pass,Pass,Pass,Pass,Pass,,Wallet
-"STS",Pass,Pass,Pass,Pass,Pass,Untested,,RSSP/QTSP
-"certSIGN",Pass,Pass,Pass,Pass,Issue,Pass,,Wallet
-"EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,,RSSP/QTSP
-"Intesi",Pass,Pass,Pass,Issue,Pass,Untested,,RSSP/QTSP
-"primesign",Untested,Untested,Untested,Untested,Untested,Untested,,Observer
-"Cleverbase",Pass,Pass,Pass,Pass,Pass,Pass,,RSSP/QTSP
-"Adobe",Pass,Pass,Pass,Pass,Partial,Untested,Pass,Client
-"Ascertia Limited",Pass,Pass,Pass,Pass,Pass,Pass,,Wallet
-"Docaposte Certinomis",Pass,Pass,Pass,Pass,Pass,Untested,,RSSP/QTSP
-"Able Tech s.p.a",Untested,Untested,Untested,Untested,Untested,Untested,,Observer
-"docusign",Pass,Pass,Pass,Pass,Untested,Untested,,Client
-"ANSE",Untested,Untested,Untested,Untested,Untested,Untested,,Observer
-"HARICA/GUnet",Pass,Pass,Pass,Pass,Pass,Untested,,RSSP/QTSP
-"ASEE Solutions d.o.o",Untested,Untested,Untested,Untested,Untested,Untested,,Observer
-"ASEE",Untested,Untested,Untested,Untested,Untested,Untested,,Observer
-"Ministry of economic affairs and climate policy",Untested,Untested,Untested,Untested,Untested,,Observer
-"ETSI",Untested,Untested,Untested,Untested,Untested,Untested,,Observer
-"iGrant.io",Pass,Pass,Pass,Pass,Pass,Untested,,Wallet
-"Namirial",,,,,,,Pass,Wallet
+Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Intesi,Ascertia Limited,Role
+Intarsys / Procilon,Pass,Pass,Pass,Pass,Pass,Untested,,,RSSP/QTSP
+Entaksi,Pass,Pass,Pass,Pass,Pass,Partial,,,RSSP/QTSP
+Evrotrust Technologies AD,Untested,Untested,Untested,Untested,Untested,Untested,,,Observer
+Aruba / Actalis,Pass,Pass,Pass,Pass,Pass,Pass,,,Wallet
+STS,Pass,Pass,Pass,Pass,Pass,Untested,,,RSSP/QTSP
+certSIGN,Pass,Pass,Pass,Pass,Issue,Pass,,,Wallet
+"EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,,,RSSP/QTSP
+Intesi,Pass,Pass,Pass,Issue,Pass,Untested,,,RSSP/QTSP
+primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,Observer
+Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,RSSP/QTSP
+Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,Client
+Ascertia Limited,Pass,Pass,Pass,Pass,Pass,Pass,,Pass,Wallet
+Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,,,RSSP/QTSP
+Able Tech s.p.a,Untested,Untested,Untested,Untested,Untested,Untested,,,Observer
+docusign,Pass,Pass,Pass,Pass,Untested,Untested,,,Client
+ANSE,Untested,Untested,Untested,Untested,Untested,Untested,,,Observer
+HARICA/GUnet,Pass,Pass,Pass,Pass,Pass,Untested,,,RSSP/QTSP
+ASEE Solutions d.o.o,Untested,Untested,Untested,Untested,Untested,Untested,,,Observer
+ASEE,Untested,Untested,Untested,Untested,Untested,Untested,,,Observer
+Ministry of economic affairs and climate policy,Untested,Untested,Untested,Untested,Untested,,Observer,
+ETSI,Untested,Untested,Untested,Untested,Untested,Untested,,,Observer
+iGrant.io,Pass,Pass,Pass,Pass,Pass,Untested,,,Wallet
+Namirial,,,,,,,Pass,,Wallet
