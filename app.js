@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewSuggestionsBtn = document.getElementById('viewSuggestions');
     const playbookView = document.getElementById('playbookView');
     const suggestionsView = document.getElementById('suggestionsView');
+    const successView = document.getElementById('successView');
     const playbookContent = document.querySelector('.playbook-content');
     const filterGroup = document.querySelector('.filter-group');
     const controls = document.querySelector('.controls');
@@ -59,11 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const path = window.location.pathname.toLowerCase().replace(/\/$/, "");
         const searchParams = new URLSearchParams(window.location.search);
         
-        if (path.endsWith('/coverage-test') || searchParams.has('view') && searchParams.get('view') === 'table') {
-            currentView = 'table';
-            viewTableBtn.classList.add('active');
+        if (searchParams.has('success')) {
+            currentView = 'success';
+            viewSuggestionsBtn.classList.remove('active');
             viewGridBtn.classList.remove('active');
+            viewTableBtn.classList.remove('active');
             viewPlaybookBtn.classList.remove('active');
+        } else if (path.endsWith('/coverage-test') || searchParams.has('view') && searchParams.get('view') === 'table') {
         } else if (path.endsWith('/directory') || searchParams.has('view') && searchParams.get('view') === 'grid') {
             currentView = 'grid';
             viewGridBtn.classList.add('active');
@@ -148,7 +151,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentView === 'suggestions') {
             controls.style.display = 'none';
             renderSuggestions();
+        } else if (currentView === 'success') {
+            controls.style.display = 'none';
+            renderSuccess();
         }
+    }
+
+    function renderSuccess() {
+        grid.style.display = 'none';
+        summaryView.style.display = 'none';
+        playbookView.style.display = 'none';
+        suggestionsView.style.display = 'none';
+        successView.style.display = 'block';
     }
 
     function renderSuggestions() {
@@ -443,6 +457,13 @@ document.addEventListener('DOMContentLoaded', () => {
         history.pushState(null, '', 'suggestions');
         updateDisplay();
     });
+
+    const returnToPlaybookBtn = document.getElementById('returnToPlaybook');
+    if (returnToPlaybookBtn) {
+        returnToPlaybookBtn.addEventListener('click', () => {
+            viewPlaybookBtn.click();
+        });
+    }
 
     toggleExpandBtn.addEventListener('click', () => {
         isExpanded = !isExpanded;
