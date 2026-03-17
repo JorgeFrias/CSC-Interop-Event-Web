@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const APP_VERSION = '1.1.0';
+    const APP_VERSION = '1.2.0';
     console.log(`CSC Event Wallet v${APP_VERSION} initialized`);
+
+    // Set dynamic Formspree redirects with cache busting
+    const forms = document.querySelectorAll('form[action*="formspree.io"]');
+    forms.forEach(form => {
+        const nextInput = form.querySelector('input[name="_next"]');
+        if (nextInput) {
+            const baseUrl = window.location.origin + window.location.pathname.replace(/\/$/, "");
+            nextInput.value = `${baseUrl}?success&t=${Date.now()}`;
+        }
+    });
     let resultsData = {}; // From CSV: { "Org Name": { "API-01": "Pass", ... } }
     let appData = { scenarios: [], companies: [] };
     let currentFilter = 'all';
