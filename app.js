@@ -68,43 +68,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function setActiveNav(activeId) {
+        const navButtons = [
+            viewGridBtn, viewTableBtn, viewPlaybookBtn, 
+            viewSuggestionsBtn, viewSubmitResultsBtn
+        ];
+        
+        navButtons.forEach(btn => {
+            if (btn) {
+                if (btn.id === activeId) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+        });
+    }
+
     function checkRoute() {
         const path = window.location.pathname.toLowerCase().replace(/\/$/, "");
         const searchParams = new URLSearchParams(window.location.search);
         
         if (searchParams.has('success')) {
             currentView = 'success';
-            viewSuggestionsBtn.classList.remove('active');
-            viewGridBtn.classList.remove('active');
-            viewTableBtn.classList.remove('active');
-            viewPlaybookBtn.classList.remove('active');
-        } else if (path.endsWith('/coverage-test') || searchParams.has('view') && searchParams.get('view') === 'table') {
-        } else if (path.endsWith('/directory') || searchParams.has('view') && searchParams.get('view') === 'grid') {
+            setActiveNav(null); // None active for success view
+        } else if (path.endsWith('/coverage-test') || (searchParams.has('view') && searchParams.get('view') === 'table')) {
+            currentView = 'table';
+            setActiveNav('viewTable');
+        } else if (path.endsWith('/directory') || (searchParams.has('view') && searchParams.get('view') === 'grid')) {
             currentView = 'grid';
-            viewGridBtn.classList.add('active');
-            viewTableBtn.classList.remove('active');
-            viewPlaybookBtn.classList.remove('active');
-            viewSuggestionsBtn.classList.remove('active');
-        } else if (path.endsWith('/suggestions') || searchParams.has('view') && searchParams.get('view') === 'suggestions') {
+            setActiveNav('viewGrid');
+        } else if (path.endsWith('/suggestions') || (searchParams.has('view') && searchParams.get('view') === 'suggestions')) {
             currentView = 'suggestions';
-            viewSuggestionsBtn.classList.add('active');
-            viewGridBtn.classList.remove('active');
-            viewTableBtn.classList.remove('active');
-            viewPlaybookBtn.classList.remove('active');
-        } else if (path.endsWith('/submit-results') || searchParams.has('view') && searchParams.get('view') === 'submit') {
+            setActiveNav('viewSuggestions');
+        } else if (path.endsWith('/submit-results') || (searchParams.has('view') && searchParams.get('view') === 'submit')) {
             currentView = 'submitResults';
-            viewSubmitResultsBtn.classList.add('active');
-            viewGridBtn.classList.remove('active');
-            viewTableBtn.classList.remove('active');
-            viewPlaybookBtn.classList.remove('active');
-            viewSuggestionsBtn.classList.remove('active');
+            setActiveNav('viewSubmitResults');
         } else {
             // Default to playbook for / or any other path
             currentView = 'playbook';
-            viewPlaybookBtn.classList.add('active');
-            viewGridBtn.classList.remove('active');
-            viewTableBtn.classList.remove('active');
-            viewSuggestionsBtn.classList.remove('active');
+            setActiveNav('viewPlaybook');
         }
     }
 
@@ -482,48 +485,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     viewGridBtn.addEventListener('click', () => {
-        viewGridBtn.classList.add('active');
-        viewTableBtn.classList.remove('active');
-        viewPlaybookBtn.classList.remove('active');
+        setActiveNav('viewGrid');
         currentView = 'grid';
         history.pushState(null, '', 'directory');
         updateDisplay();
     });
 
     viewTableBtn.addEventListener('click', () => {
-        viewTableBtn.classList.add('active');
-        viewGridBtn.classList.remove('active');
-        viewPlaybookBtn.classList.remove('active');
+        setActiveNav('viewTable');
         currentView = 'table';
         history.pushState(null, '', 'coverage-test');
         updateDisplay();
     });
 
     viewPlaybookBtn.addEventListener('click', () => {
-        viewPlaybookBtn.classList.add('active');
-        viewGridBtn.classList.remove('active');
-        viewTableBtn.classList.remove('active');
-        viewSuggestionsBtn.classList.remove('active');
+        setActiveNav('viewPlaybook');
         currentView = 'playbook';
         history.pushState(null, '', 'playbook');
         updateDisplay();
     });
+
     viewSuggestionsBtn.addEventListener('click', () => {
-        viewSuggestionsBtn.classList.add('active');
-        viewGridBtn.classList.remove('active');
-        viewTableBtn.classList.remove('active');
-        viewPlaybookBtn.classList.remove('active');
+        setActiveNav('viewSuggestions');
         currentView = 'suggestions';
         history.pushState(null, '', 'suggestions');
         updateDisplay();
     });
 
     viewSubmitResultsBtn.addEventListener('click', () => {
-        viewSubmitResultsBtn.classList.add('active');
-        viewGridBtn.classList.remove('active');
-        viewTableBtn.classList.remove('active');
-        viewPlaybookBtn.classList.remove('active');
-        viewSuggestionsBtn.classList.remove('active');
+        setActiveNav('viewSubmitResults');
         currentView = 'submitResults';
         history.pushState(null, '', 'submit-results');
         updateDisplay();
