@@ -264,13 +264,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     <tr>
                         <td class="participant-cell sticky-col">${wallet.organisation}</td>
                         ${rssps.map(rssp => {
-                            const status = getMockStatus(wallet.id, rssp.id);
-                            const iconMap = { 'Pass': '✅', 'Partial': '🔶', 'Issue': '❌', 'Untested': '' };
-                            const classMap = { 'Pass': 'pass', 'Partial': 'partial', 'Issue': 'issue', 'Untested': 'untested' };
+                            const pairingKey = `${wallet.organisation}_${rssp.organisation}`;
+                            const pairing = appData.pairings[pairingKey];
+                            const result = resultsData[wallet.organisation] ? resultsData[wallet.organisation][rssp.organisation] : null;
+                            
+                            let status = 'untested';
+                            let icon = '';
+                            let title = `${wallet.organisation} vs ${rssp.organisation}`;
+
+                            if (result) {
+                                status = result.toLowerCase();
+                                const iconMap = { 'pass': '✅', 'partial': '🔶', 'issue': '❌' };
+                                icon = iconMap[status] || '❓';
+                                title += `: ${result}`;
+                            } else if (pairing) {
+                                status = 'planned';
+                                icon = '📋';
+                                title += `: Planned (${pairing.status})`;
+                                if (pairing.notes) title += ` - ${pairing.notes}`;
+                            }
                             
                             return `<td class="status-cell">
-                                <span class="status-icon ${classMap[status]}" title="${wallet.organisation} (Wallet) vs ${rssp.organisation} (RSSP): ${status}">
-                                    ${iconMap[status]}
+                                <span class="status-icon ${status}" title="${title}">
+                                    ${icon}
                                 </span>
                             </td>`;
                         }).join('')}
@@ -306,36 +322,67 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('modal');
         const body = document.getElementById('modalBody');
         
+        const tech = company.technical_details || {};
+        
         body.innerHTML = `
             <h2 class="org-name" style="font-size: 2rem;">${company.organisation}</h2>
             <div class="role-tags">
                 ${company.roles.map(role => `<span class="role-tag" style="font-size: 0.9rem;">${role}</span>`).join('')}
             </div>
             
-            <div style="margin-top: 2rem;">
-                <h3 style="margin-bottom: 1rem;">Registered Technical Team</h3>
-                <ul style="list-style: none; margin-bottom: 2rem;">
-                    ${company.participants.map(p => `<li style="padding: 0.5rem 0; border-bottom: 1px solid var(--glass-border);">${p}</li>`).join('')}
-                </ul>
-            </div>
+            <div class="modal-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                <div class="modal-left">
+                    <h3 style="margin-bottom: 1rem;">Registered Technical Team</h3>
+                    <ul style="list-style: none; margin-bottom: 2rem;">
+                        ${company.participants.map(p => `<li style="padding: 0.5rem 0; border-bottom: 1px solid var(--glass-border);">${p}</li>`).join('')}
+                    </ul>
 
-            <div>
-                <h3 style="margin-bottom: 1rem;">Implementation Details</h3>
-                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 1rem;">
-                    <strong>Active Implementations:</strong><br>
-                    ${Array.isArray(company.implementations) ? company.implementations.join(', ') : Object.values(company.implementations).join(', ')}
+                    <h3 style="margin-bottom: 1rem;">Implementation Roles</h3>
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 1rem; margin-bottom: 2rem;">
+                        <strong>Active Components:</strong><br>
+                        ${Array.isArray(company.implementations) ? company.implementations.join(', ') : 'No specific details provided'}
+                    </div>
+
+                    <h3 style="margin-bottom: 1rem;">Covered CSC Scenarios</h3>
+                    <div class="scenario-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem;">
+                        ${appData.scenarios.filter(s => company.scenarios.includes(s.id)).map(s => `
+                            <div class="scenario-item card" style="background: rgba(255,255,255,0.03); padding: 0.5rem;">
+                                <strong style="color: ${s.category === 'Core' ? 'var(--core-color)' : 'var(--advanced-color)'}">${s.id}</strong><br>
+                                <small style="font-size: 0.7rem;">${s.name}</small>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>
-            </div>
 
-            <div style="margin-top: 2rem;">
-                <h3 style="margin-bottom: 1rem;">Covered CSC Scenarios</h3>
-                <div class="scenario-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    ${appData.scenarios.filter(s => company.scenarios.includes(s.id)).map(s => `
-                        <div class="scenario-item card" style="background: rgba(255,255,255,0.03); padding: 0.8rem;">
-                            <strong style="color: ${s.category === 'Core' ? 'var(--core-color)' : 'var(--advanced-color)'}">${s.id}</strong><br>
-                            <small>${s.name}</small>
+                <div class="modal-right">
+                    <h3 style="margin-bottom: 1rem; color: var(--core-color);">Technical Integration Details</h3>
+                    
+                    <div class="tech-detail-item" style="margin-bottom: 1.5rem;">
+                        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Endpoints Status</span>
+                        <p style="margin-top: 0.25rem;">${tech.endpoints_available || 'TBD'}</p>
+                    </div>
+
+                    <div class="tech-detail-item" style="margin-bottom: 1.5rem;">
+                        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Connection Details / Sandboxes</span>
+                        <pre style="margin-top: 0.5rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0.5rem; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap;">${tech.technical_details || 'Not provided'}</pre>
+                    </div>
+
+                    <div class="tech-detail-item" style="margin-bottom: 1.5rem;">
+                        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Auth / Access Requirements</span>
+                        <p style="margin-top: 0.25rem; font-size: 0.9rem;">${tech.auth_requirements || 'Standard OAuth2'}</p>
+                    </div>
+
+                    <div class="tech-detail-item" style="margin-bottom: 1.5rem;">
+                        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Trust & Certificates</span>
+                        <p style="margin-top: 0.25rem; font-size: 0.9rem;">${tech.trust_anchors || 'Standard QTSP chain'}</p>
+                    </div>
+
+                    ${tech.technical_constraints ? `
+                        <div class="tech-detail-item">
+                            <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Technical Constraints</span>
+                            <p style="margin-top: 0.25rem; font-size: 0.9rem; color: #ff9f43;">${tech.technical_constraints}</p>
                         </div>
-                    `).join('')}
+                    ` : ''}
                 </div>
             </div>
         `;

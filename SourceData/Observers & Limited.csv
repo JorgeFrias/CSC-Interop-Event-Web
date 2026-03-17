@@ -1,0 +1,15 @@
+Canonical Organisation,Primary Contacts,Emails,Participation Type,Event Role,Observer,Limited Technical Participation?,Technical Notes / Constraints,Suggested Handling,Internal Notes
+Trans Sped,Andrei Brînzea,andrei.brinzea@transsped.ro,Active + Observer,Active tester,Yes,Yes,Current CSC v2 test environment is not intended for general shared access; certificates are provisioned specifically for their setup.,Observe sessions; introduce only if a controlled / optional scenario is requested.,
+Able Tech,Michael Perdomini,m.perdomini@abletech.it,Active + Observer,Pending / unconfirmed,Yes,No,"for testing we need:
+
+Relying Party / Verifier
+Wallet for Android Device
+And CSC API 2.2.0 Implementation for Wallet",Observe sessions; introduce only if a controlled / optional scenario is requested.,
+ANSE,Andrei Nicoara,andrei.nicoara@anse.ro,Observer Only,Pending / unconfirmed,Yes,No,/,Observe sessions; introduce only if a controlled / optional scenario is requested.,
+ASEE,"Marin Mihajlović
+Paskal Šimec","marin.mihajlovic@asee.io
+paskal.simec@asee.io",Active + Observer,Pending / unconfirmed,Yes,No,/,Observe sessions; introduce only if a controlled / optional scenario is requested.,
+ETSI,Laurent Velez,laurent.Velez@etsi.org,Observer Only,Pending / unconfirmed,Yes,No,No,Observe sessions; introduce only if a controlled / optional scenario is requested.,
+Evrotrust,Hristian Daskalov,hristian.daskalov@evrotrust.com,Observer Only,Pending / unconfirmed,Yes,No,Access to wallet implementations,Observe sessions; introduce only if a controlled / optional scenario is requested.,
+Ministry of Economic Affairs and Climate Policy,Rob Brand,r.p.brand@minezk.nl,Observer Only,Pending / unconfirmed,Yes,No,No,Observe sessions; introduce only if a controlled / optional scenario is requested.,
+primesign,Cornelia Bruchsteiner,cornelia.bruchsteiner@prime-sign.com,Observer Only,Pending / unconfirmed,Yes,No,Current CSC v2 test environment is not intended for general shared access; certificates are provisioned specifically for their setup.,Observe sessions; introduce only if a controlled / optional scenario is requested.,

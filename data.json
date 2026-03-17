@@ -33,43 +33,22 @@
   ],
   "companies": [
     {
-      "id": "6486419070301840164",
-      "organisation": "intarsys GmbH / procilon GROUP GmbH",
-      "contact": "Thomas Pielczyk",
+      "id": "org_0",
+      "organisation": "Adobe",
+      "contact": "Andrea Valle",
+      "emails": "avalle@adobe.com",
       "participants": [
-        "Thomas Pielczyk",
-        "Andreas Mayer",
-        "Jörg Henschel"
+        "Andrea Valle",
+        "Santhi Muthusamy"
       ],
       "roles": [
         "CSC Service Provider (QTSP / RSSP)",
-        "CSC Client (non-wallet)"
-      ],
-      "implementations": [
-        "CSC API 2.2.0 Implementation",
-        "CSC Client (non wallet) implementation"
-      ],
-      "scenarios": [
-        "API-01",
-        "API-02",
-        "API-03",
-        "API-05",
-        "SC-01"
-      ]
-    },
-    {
-      "id": "6486309977717699502",
-      "organisation": "Entaksi Solutions SpA",
-      "contact": "Stefano Travelli",
-      "participants": [
-        "Stefano Travelli, Ciro Sasso"
-      ],
-      "roles": [
-        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
         "Relying Party / Verifier"
       ],
       "implementations": [
-        "CSC API 2.2.0 Implementation"
+        "CSC Client",
+        "RP / Verifier"
       ],
       "scenarios": [
         "API-01",
@@ -77,28 +56,20 @@
         "API-03",
         "API-05",
         "SC-01"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "No public provider endpoint confirmed",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "Treat operationally as CSC Client + RP / Verifier until Adobe confirms otherwise"
+      }
     },
     {
-      "id": "6486252590413345988",
-      "organisation": "Evrotrust Technologies AD",
-      "contact": "Hristian Daskalov",
-      "participants": [
-        "Mr. Hristian Daskalov - Security Compliance Director",
-        "Ms. Petya Valkova - Chief Product Officer"
-      ],
-      "roles": [
-        "Observer / Witness (no active implementation)"
-      ],
-      "implementations": [
-        "N/A (attending as Observer only)"
-      ],
-      "scenarios": []
-    },
-    {
-      "id": "6486175941418488436",
-      "organisation": "Aruba Pec/Actalis",
+      "id": "org_1",
+      "organisation": "Aruba / Actalis",
       "contact": "Marco Pancioni",
+      "emails": "marco.pancioni@staff.aruba.it",
       "participants": [
         "Claudio Cheli (claudio.cheli@staff.aruba.it)",
         "Marco Pancioni (marco.pancioni@staff.aruba.it)"
@@ -110,8 +81,10 @@
         "Relying Party / Verifier"
       ],
       "implementations": [
-        "Wallet Implementation",
-        "CSC API 2.2.0 Implementation"
+        "Wallet implementation",
+        "Issuer",
+        "Verifier",
+        "demo CSC-connected environment"
       ],
       "scenarios": [
         "API-01",
@@ -120,36 +93,42 @@
         "API-05",
         "SC-01",
         "SC-02"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes / demo environment",
+        "technical_details": "CSC API base URL: https://eudiwcsc.demo.arubapec.it\nAuthorization endpoint: oauth2/authorize\nToken endpoint: oauth2/token\nCredentials list: /credentials/list\nCredential info: /credentials/info\nSign hash: /signatures/signhash",
+        "auth_requirements": "OAuth2\nclient_id: walletclient\nclient_secret: somesecret2",
+        "trust_anchors": "Verifier and issuer certificates provided; QTSP CA to be shared if approved for circulation",
+        "technical_constraints": "OID4VP 1.0; OID4VCI 1.0; PID model ARF 2.8.0; key type ECDSA 256"
+      }
     },
     {
-      "id": "6486003710128622031",
-      "organisation": "STS",
-      "contact": "Cristian Zaiu",
+      "id": "org_2",
+      "organisation": "Ascertia Limited",
+      "contact": "Jorge Frias",
+      "emails": "jorge.frias@ascertia.com",
       "participants": [
-        "Calugaru Teodor",
-        "Pascu Horia",
-        "Zaiu Cristian."
+        "- Sven Prinsloo",
+        "- Jorge Frias"
       ],
-      "roles": [
-        "CSC Service Provider (QTSP / RSSP)",
-        "Issuer"
-      ],
+      "roles": [],
       "implementations": [
-        "CSC API 2.2.0 Implementation"
+        "Organiser and technical assistance only"
       ],
-      "scenarios": [
-        "API-01",
-        "API-02",
-        "API-03",
-        "API-05",
-        "SC-01"
-      ]
+      "scenarios": [],
+      "technical_details": {
+        "endpoints_available": "Not applicable",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "Not part of participant interoperability matrix"
+      }
     },
     {
-      "id": "6485954687886898175",
-      "organisation": "certSIGN S.A.",
+      "id": "org_3",
+      "organisation": "certSIGN",
       "contact": "Ionut Ciobanu",
+      "emails": "ionut.ciobanu@certsign.ro",
       "participants": [
         "Nicolae Ghibu",
         "George Gugulea",
@@ -165,9 +144,9 @@
         "Relying Party / Verifier"
       ],
       "implementations": [
-        "Wallet Implementation",
-        "CSC API 2.2.0 Implementation",
-        "CSC Client (non wallet) implementation"
+        "Own wallet, CSC service, CSC client, issuer, RP/verifier",
+        "environment derived from reference implementation",
+        "CSC API target v2.2.0."
       ],
       "scenarios": [
         "API-01",
@@ -176,134 +155,34 @@
         "API-05",
         "SC-01",
         "SC-02"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "Not publicly exposed; limited controlled testing only",
+        "technical_details": "No public endpoints; environment inside own VPN. Some wallet scenarios may need app running on certSIGN-controlled phones inside VPN.",
+        "auth_requirements": "External wallet integration would require redefining URLs and importing certificates. Much better if pairing is prepared before event.",
+        "trust_anchors": "Scenario materials and trust/configuration artifacts to be shared later when ready.",
+        "technical_constraints": "We can prove two full flows of signHash from a wallet centric and an RP-centric perspective (non-wallet CSC client), with an environment derived from the Reference Wallet Implementation (wallet, issuer, verifier, Authentication Server, SCA), an our own RSS. As such, we have a complete solution (from a components/actors perspective), but this solution is not exposed (runs in our sandboxed VPN). We would like to be paired with both a Wallet Solution (to bring it into our environment) and also with another QTSP to test our Wallet Solution.\nEvidence will be provided for all the flows and all the calls in all available scenarios.\nEnvironment inside corporate VPN; time-limited feasibility for external integrations."
+      }
     },
     {
-      "id": "6485387865351055872",
-      "organisation": "EAD Trust, European Agency of Digital Trust, S.L.",
-      "contact": "Eduardo Inza",
-      "participants": [
-        "Daniel Rontomé",
-        "Bruno Valcarcel"
-      ],
-      "roles": [
-        "CSC Service Provider (QTSP / RSSP)",
-        "CSC Client (non-wallet)",
-        "Issuer",
-        "Relying Party / Verifier"
-      ],
-      "implementations": [
-        "CSC API 2.2.0 Implementation"
-      ],
-      "scenarios": [
-        "API-01",
-        "API-02",
-        "API-03",
-        "API-05",
-        "SC-01"
-      ]
-    },
-    {
-      "id": "6485378604115802115",
-      "organisation": "Intesi Group",
-      "contact": "Daniele Ribaudo",
-      "participants": [
-        "Daniele Ribaudo, Francesco Barcellini, Marco Monacelli"
-      ],
-      "roles": [
-        "CSC Service Provider (QTSP / RSSP)",
-        "CSC Client (non-wallet)"
-      ],
-      "implementations": [
-        "CSC API 2.2.0 Implementation",
-        "CSC Client (non wallet) implementation"
-      ],
-      "scenarios": [
-        "API-01",
-        "API-02",
-        "API-03",
-        "API-05",
-        "SC-01"
-      ]
-    },
-    {
-      "id": "6485284679559301139",
-      "organisation": "primesign",
-      "contact": "Cornelia Bruchsteiner",
-      "participants": [
-        "- Cornelia Bruchsteiner"
-      ],
-      "roles": [
-        "Observer / Witness (no active implementation)"
-      ],
-      "implementations": [
-        "N/A (attending as Observer only)"
-      ],
-      "scenarios": []
-    },
-    {
-      "id": "6485234105362357601",
+      "id": "org_4",
       "organisation": "Cleverbase",
       "contact": "Hidde Dorhout",
+      "emails": "hidde.dorhout@cleverbase.com",
       "participants": [
         "- Hidde Dorhout",
         "- Bob Reynders",
         "- Josh Cohen"
       ],
       "roles": [
-        "CSC Service Provider (QTSP / RSSP)"
-      ],
-      "implementations": [
-        "Wallet Implementation",
-        "CSC API 2.2.0 Implementation"
-      ],
-      "scenarios": [
-        "API-01",
-        "API-02",
-        "API-03",
-        "API-05",
-        "SC-01"
-      ]
-    },
-    {
-      "id": "6485192643423919620",
-      "organisation": "Adobe",
-      "contact": "Andrea Valle",
-      "participants": [
-        "Andrea Valle",
-        "Santhi Muthusamy"
-      ],
-      "roles": [
+        "Wallet Provider",
         "CSC Service Provider (QTSP / RSSP)",
         "CSC Client (non-wallet)",
+        "Issuer",
         "Relying Party / Verifier"
       ],
       "implementations": [
-        "CSC Client (non wallet) implementation"
-      ],
-      "scenarios": [
-        "API-01",
-        "API-02",
-        "API-03",
-        "API-05",
-        "SC-01"
-      ]
-    },
-    {
-      "id": "6485168917329285993",
-      "organisation": "Ascertia Limited",
-      "contact": "Jorge Frias",
-      "participants": [
-        "- Sven Prinsloo",
-        "- Jorge Frias"
-      ],
-      "roles": [
-        "Wallet Provider",
-        "CSC Service Provider (QTSP / RSSP)"
-      ],
-      "implementations": [
-        "Wallet Implementation",
-        "CSC API 2.2.0 Implementation"
+        "Full stack implementation: Wallet, CSC Provider, CSC Client, Verifier and credential issuance/testing endpoints. Provides CSC endpoints for interoperability testing."
       ],
       "scenarios": [
         "API-01",
@@ -312,12 +191,20 @@
         "API-05",
         "SC-01",
         "SC-02"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes – CSC API endpoints provided",
+        "technical_details": "CSC docs / endpoint: https://signing.lab.cleverbase.io/csc/v2/docs/",
+        "auth_requirements": "client_id=wallet-client ; client_secret=somesecret2 ; redirect_uri=rqes://oauth/callback ; deeplink schemas eudi-openid4vp:// and openid-credential-offer:// . Flexible to change values or create new clients on the spot.",
+        "trust_anchors": "Verifier certificates shared in response for verifier implementation; wallet requires verifier certificates for presentation sharing.",
+        "technical_constraints": "- Authorization flow requires PID presentation;\n- We have a test wallet for this event; \n   -  This wallet requires verifier certificates to be able to share credential presentations\n   - To interop with other RSSPs, client credentials need to be build into the wallet\nAuthorization flow requires PID presentation."
+      }
     },
     {
-      "id": "6485166663914957696",
+      "id": "org_5",
       "organisation": "Docaposte Certinomis",
       "contact": "Louis Raffin",
+      "emails": "louis.raffin@docaposte.fr",
       "participants": [
         "François CHASSERY",
         "Jean Marc DESPERRIER",
@@ -330,8 +217,11 @@
         "Relying Party / Verifier"
       ],
       "implementations": [
-        "CSC API 2.2.0 Implementation",
-        "CSC Client (non wallet) implementation"
+        "CSC Service Provider",
+        "CSC Client",
+        "Issuer",
+        "Verifier / RP",
+        "CSC API v2.2.0"
       ],
       "scenarios": [
         "API-01",
@@ -339,28 +229,20 @@
         "API-03",
         "API-05",
         "SC-01"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "No public endpoints confirmed yet",
+        "technical_details": "Awaiting reply / endpoint details",
+        "auth_requirements": "Awaiting reply / OAuth details",
+        "trust_anchors": "Awaiting reply / trust details",
+        "technical_constraints": "Form indicated endpoints not publicly accessible; likely best treated first as client / verifier unless they confirm provider-side exposure."
+      }
     },
     {
-      "id": "6485157475212739689",
-      "organisation": "Able Tech s.p.a",
-      "contact": "Michael Perdomini",
-      "participants": [
-        "Michael Perdomini"
-      ],
-      "roles": [
-        "Relying Party / Verifier",
-        "Observer / Witness (no active implementation)"
-      ],
-      "implementations": [
-        "N/A (attending as Observer only)"
-      ],
-      "scenarios": []
-    },
-    {
-      "id": "6485155206788095811",
-      "organisation": "docusign",
+      "id": "org_6",
+      "organisation": "DocuSign",
       "contact": "Andrew Mittleider",
+      "emails": "andrew.mittleider@docusign.com",
       "participants": [
         "Erika Veselova",
         "Andrew Mittleider"
@@ -369,35 +251,97 @@
         "CSC Client (non-wallet)"
       ],
       "implementations": [
-        "CSC API 2.2.0 Implementation",
-        "CSC Client (non wallet) implementation"
+        "CSC Client (non-wallet)",
+        "expected CSC API v2.2.0 alignment (possible bugs due to only internal testing)."
       ],
       "scenarios": [
         "API-01",
         "API-02",
         "API-03",
         "API-05"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "No shared service endpoints / client only",
+        "technical_details": "Redirect pattern: https://localhost:5005/*",
+        "auth_requirements": "OAuth; provider-side redirect whitelisting needed",
+        "trust_anchors": "",
+        "technical_constraints": "We intend to use localhost redirect URLs, we hope this is OK for test scenarios as deploying the app publicly might be challenging in the short timeframe.\nWildcard redirect support preferred; if unsupported, can provide exact redirect URLs."
+      }
     },
     {
-      "id": "6485140000276113810",
-      "organisation": "ANSE",
-      "contact": "Andrei Nicoara",
+      "id": "org_7",
+      "organisation": "EAD Trust",
+      "contact": "Eduardo Inza",
+      "emails": "eduardo.inza@eadtrust.com",
       "participants": [
-        "Andrei Nicoara"
+        "Daniel Rontomé",
+        "Bruno Valcarcel"
       ],
       "roles": [
-        "Observer / Witness (no active implementation)"
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
+        "Issuer",
+        "Relying Party / Verifier"
       ],
       "implementations": [
-        "N/A (attending as Observer only)"
+        "CSC Provider",
+        "CSC Client",
+        "Issuer",
+        "Verifier",
+        "externally reachable test environment"
       ],
-      "scenarios": []
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes / test environment",
+        "technical_details": "Awaiting exact endpoint URLs; test environment available for external integration",
+        "auth_requirements": "OAuth; client_id / client_secret required; Authorization Code or Client Credentials flow",
+        "trust_anchors": "Trust anchors shared / available for testing",
+        "technical_constraints": "Requires a test account owning a certificate; internet access required"
+      }
     },
     {
-      "id": "6485130545028886036",
-      "organisation": "HARICA/GUnet",
+      "id": "org_8",
+      "organisation": "Entaksi",
+      "contact": "Stefano Travelli",
+      "emails": "stefano.travelli@entaksi.eu",
+      "participants": [
+        "Stefano Travelli, Ciro Sasso"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "CSC API v2.2.0 environment online",
+        "RP / verifier identity broker based on Keycloak",
+        "can provide wallet client_ids."
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes",
+        "technical_details": "CSC base: https://dev.entaksi.eu/tsp/api/v1/ ; OIDC well-known: https://dev.entaksi.eu/auth/realms/edoc/.well-known/openid-configuration ; CSC APIs under /csc/v2 including credentials/list, credentials/info, signatures/signHash, signatures/signDoc, credentials/create, credentials/delete",
+        "auth_requirements": "Can issue one or more wallet client_ids. Redirect URI format for brokered IdP: https://dev.entaksi.eu/auth/realms/edoc/broker/walletX/endpoint . Supports PAR and authorize URL parameter flow.",
+        "trust_anchors": "Needs external IdP endpoints and public keys for broker configuration.",
+        "technical_constraints": "SubjectData currently expects eidas_person_identifier for credential creation where applicable; API-01 should include subject authentication; supports PAR and authorize URL parameter flow."
+      }
+    },
+    {
+      "id": "org_9",
+      "organisation": "HARICA / GUnet",
       "contact": "Antonios Eleftheriadis",
+      "emails": "antonisel@harica.gr",
       "participants": [
         "Konstantinos Maneadis"
       ],
@@ -406,7 +350,9 @@
         "Issuer"
       ],
       "implementations": [
-        "CSC API 2.2.0 Implementation"
+        "CSC Service Provider",
+        "Issuer",
+        "staging CSC environment"
       ],
       "scenarios": [
         "API-01",
@@ -414,76 +360,20 @@
         "API-03",
         "API-05",
         "SC-01"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes / staging environment",
+        "technical_details": "CSC API base URL: https://csc-stg.harica.gr/csc/v2/\nUser portal / issuance: https://cm-stg.harica.gr",
+        "auth_requirements": "Manual client registration (client_id / secret / permitted URLs)",
+        "trust_anchors": "Remote QSCD / certificate material available via HARICA staging environment",
+        "technical_constraints": "Current environment confirmed as CSC API 2.1 unless 2.2 is deployed before event"
+      }
     },
     {
-      "id": "6485126517689598410",
-      "organisation": "ASEE Solutions d.o.o",
-      "contact": "Marin Mihajlović",
-      "participants": [
-        "Paskal Šimec"
-      ],
-      "roles": [
-        "Observer / Witness (no active implementation)"
-      ],
-      "implementations": [
-        "CSC API 2.2.0 Implementation",
-        "CSC Client (non wallet) implementation",
-        "N/A (attending as Observer only)"
-      ],
-      "scenarios": []
-    },
-    {
-      "id": "6485126475688679801",
-      "organisation": "ASEE",
-      "contact": "Paskal Šimec",
-      "participants": [
-        "Marin Mihajlović"
-      ],
-      "roles": [
-        "Observer / Witness (no active implementation)"
-      ],
-      "implementations": [
-        "CSC API 2.2.0 Implementation",
-        "CSC Client (non wallet) implementation",
-        "N/A (attending as Observer only)"
-      ],
-      "scenarios": []
-    },
-    {
-      "id": "6485125175818733303",
-      "organisation": "Ministry of economic affairs and climate policy",
-      "contact": "Rob Brand",
-      "participants": [
-        "Rob Brand"
-      ],
-      "roles": [
-        "Observer / Witness (no active implementation)"
-      ],
-      "implementations": [
-        "N/A (attending as Observer only)"
-      ],
-      "scenarios": []
-    },
-    {
-      "id": "6485120461621563741",
-      "organisation": "ETSI",
-      "contact": "Laurent Velez",
-      "participants": [
-        "Laurent Velez"
-      ],
-      "roles": [
-        "Observer / Witness (no active implementation)"
-      ],
-      "implementations": [
-        "N/A (attending as Observer only)"
-      ],
-      "scenarios": []
-    },
-    {
-      "id": "6485118793415901870",
-      "organisation": "iGrant.io",
+      "id": "org_10",
+      "organisation": "iGrant",
       "contact": "Lal Chandran",
+      "emails": "lal@igrant.io",
       "participants": [
         "Lal Chandran"
       ],
@@ -493,18 +383,650 @@
         "Issuer",
         "Relying Party / Verifier"
       ],
-      "implementations": {
-        "0": "Wallet Implementation",
-        "1": "CSC Client (non wallet) implementation",
-        "other": "Issuer and verifier integration"
-      },
+      "implementations": [
+        "Wallet",
+        "CSC Client",
+        "Issuer",
+        "Verifier / RP"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01",
+        "SC-02"
+      ],
+      "technical_details": {
+        "endpoints_available": "Withdrawn",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "Withdrawn / not participating"
+      }
+    },
+    {
+      "id": "org_11",
+      "organisation": "Intarsys / Procilon",
+      "contact": "Thomas Pielczyk",
+      "emails": "tpielczyk@intarsys.de",
+      "participants": [
+        "Thomas Pielczyk",
+        "Andreas Mayer",
+        "Jörg Henschel"
+      ],
+      "roles": [
+        "CSC Client (non-wallet)"
+      ],
+      "implementations": [
+        "CSC Client (non-wallet), CSC API v2.2.0 support"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05"
+      ],
+      "technical_details": {
+        "endpoints_available": "No / not applicable after role reduction",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": ""
+      }
+    },
+    {
+      "id": "org_12",
+      "organisation": "Intesi",
+      "contact": "Daniele Ribaudo",
+      "emails": "dribaudo@intesigroup.com",
+      "participants": [
+        "Daniele Ribaudo, Francesco Barcellini, Marco Monacelli"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)"
+      ],
+      "implementations": [
+        "CSC Provider",
+        "CSC Client",
+        "externally reachable provider/client environment"
+      ],
       "scenarios": [
         "API-01",
         "API-02",
         "API-03",
         "API-05",
         "SC-01"
-      ]
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes / externally reachable",
+        "technical_details": "Awaiting exact endpoint URLs; external endpoint available for client/provider interoperability",
+        "auth_requirements": "OAuth",
+        "trust_anchors": "Credentials / certificate details to be provided during event if needed",
+        "technical_constraints": "Supports CSC API 2.2.0; some scenarios may be limited"
+      }
+    },
+    {
+      "id": "org_13",
+      "organisation": "Microsec",
+      "contact": "Balázs Czékmány",
+      "emails": "czekmany.balazs@microsec.hu",
+      "participants": [
+        "Balázs Czékmány",
+        "László dr. Györgypál"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)"
+      ],
+      "implementations": [
+        "CSC Service Provider",
+        "CSC API v2.2.0"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ],
+      "technical_details": {
+        "endpoints_available": "Pending / no endpoint URLs shared yet",
+        "technical_details": "Awaiting endpoint details",
+        "auth_requirements": "Awaiting auth details",
+        "trust_anchors": "Awaiting trust details",
+        "technical_constraints": "for testing we need:\n\nRelying Party / Verifier\nWallet for Android Device\nAnd CSC API 2.2.0 Implementation for Wallet"
+      }
+    },
+    {
+      "id": "org_14",
+      "organisation": "Namirial",
+      "contact": "Gianmario Cortese\nNicola Iovine",
+      "emails": "g.cortese@namirial.com\nn.iovine@namirial.com",
+      "participants": [
+        "Nicola Iovine, Gianmario Cortese",
+        "---",
+        "Gianmario Cortese",
+        "Nicola Iovine"
+      ],
+      "roles": [
+        "Wallet Provider",
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
+        "Issuer",
+        "Relying Party / Verifier"
+      ],
+      "implementations": [
+        "Wallet implementation, CSC API v2.2.0, CSC Client (non-wallet)."
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01",
+        "SC-02"
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes, with some coordination",
+        "technical_details": "SCA: https://wallet-sca.dev.namirial.com ; CSC Server: https://wallet-csc.dev.namirial.com/api/csc/v2 ; Wallet app: https://wallet-demo.namirial.com/registration/success/landing_page",
+        "auth_requirements": "Some coordination required before new CSC provider integrations due to internal configuration updates.",
+        "trust_anchors": "Awaiting trust / certificate details if they choose to share",
+        "technical_constraints": ""
+      }
+    },
+    {
+      "id": "org_15",
+      "organisation": "STS",
+      "contact": "Cristian Zaiu",
+      "emails": "cristian.zaiu@stsnet.ro",
+      "participants": [
+        "Calugaru Teodor",
+        "Pascu Horia",
+        "Zaiu Cristian."
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "CSC Client (non-wallet)",
+        "Issuer"
+      ],
+      "implementations": [
+        "External-facing beta CSC API v2.2.0 service and authorization server",
+        "issuer-side capability."
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ],
+      "technical_details": {
+        "endpoints_available": "Yes / beta environment",
+        "technical_details": "Authorization / identity: https://beta-idp.stsisp.ro\nCSC API / signing: https://beta-sign.stsisp.ro/csc/v2\nRoot CA: http://ca.stsisp.ro/certificate/rootg2.crt\nIntermediate CA: http://ca.stsisp.ro/certificate/clasa1g2.crt",
+        "auth_requirements": "OAuth / PKCE",
+        "trust_anchors": "Root + intermediate CA available via STS certificate URLs",
+        "technical_constraints": "Romanian IP whitelist restriction may apply"
+      }
+    },
+    {
+      "id": "org_16",
+      "organisation": "Trans Sped",
+      "contact": "Andrei Brînzea",
+      "emails": "andrei.brinzea@transsped.ro",
+      "participants": [
+        "Andrei Brînzea"
+      ],
+      "roles": [
+        "CSC Service Provider (QTSP / RSSP)",
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "CSC API v2 implementation for limited controlled use",
+        "observer role for wider event."
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05",
+        "SC-01"
+      ],
+      "technical_details": {
+        "endpoints_available": "No general access; controlled / supervised only",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "Current CSC v2 test environment is not intended for general shared access; certificates are provisioned specifically for their setup."
+      }
+    },
+    {
+      "id": "org_17",
+      "organisation": "Able Tech",
+      "contact": "Michael Perdomini",
+      "emails": "m.perdomini@abletech.it",
+      "participants": [
+        "Michael Perdomini"
+      ],
+      "roles": [
+        "Relying Party / Verifier",
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "Verifier / RP",
+        "Observer"
+      ],
+      "scenarios": [],
+      "technical_details": {
+        "endpoints_available": "Observer only / not expected to provide technical integration details",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "for testing we need:\n\nRelying Party / Verifier\nWallet for Android Device\nAnd CSC API 2.2.0 Implementation for Wallet"
+      }
+    },
+    {
+      "id": "org_18",
+      "organisation": "ANSE",
+      "contact": "Andrei Nicoara",
+      "emails": "andrei.nicoara@anse.ro",
+      "participants": [
+        "Andrei Nicoara"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "Observer"
+      ],
+      "scenarios": [],
+      "technical_details": {
+        "endpoints_available": "Observer only / not expected to provide technical integration details",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "/"
+      }
+    },
+    {
+      "id": "org_19",
+      "organisation": "ASEE",
+      "contact": "Marin Mihajlović\nPaskal Šimec",
+      "emails": "marin.mihajlovic@asee.io\npaskal.simec@asee.io",
+      "participants": [
+        "Marin Mihajlović",
+        "---",
+        "Paskal Šimec"
+      ],
+      "roles": [
+        "CSC Client (non-wallet)",
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "CSC Client",
+        "Observer",
+        "CSC API v2.2.0"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05"
+      ],
+      "technical_details": {
+        "endpoints_available": "Observer only / not expected to provide technical integration details",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "/"
+      }
+    },
+    {
+      "id": "org_20",
+      "organisation": "ETSI",
+      "contact": "Laurent Velez",
+      "emails": "laurent.Velez@etsi.org",
+      "participants": [
+        "Laurent Velez"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "Observer"
+      ],
+      "scenarios": [],
+      "technical_details": {
+        "endpoints_available": "Observer only / not expected to provide technical integration details",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "No"
+      }
+    },
+    {
+      "id": "org_21",
+      "organisation": "Evrotrust",
+      "contact": "Hristian Daskalov",
+      "emails": "hristian.daskalov@evrotrust.com",
+      "participants": [
+        "Mr. Hristian Daskalov - Security Compliance Director",
+        "Ms. Petya Valkova - Chief Product Officer"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "Observer"
+      ],
+      "scenarios": [],
+      "technical_details": {
+        "endpoints_available": "Observer only / not expected to provide technical integration details",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": ""
+      }
+    },
+    {
+      "id": "org_22",
+      "organisation": "Ministry of Economic Affairs and Climate Policy",
+      "contact": "Rob Brand",
+      "emails": "r.p.brand@minezk.nl",
+      "participants": [
+        "Rob Brand"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "Observer"
+      ],
+      "scenarios": [],
+      "technical_details": {
+        "endpoints_available": "Observer only / not expected to provide technical integration details",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "No"
+      }
+    },
+    {
+      "id": "org_23",
+      "organisation": "primesign",
+      "contact": "Cornelia Bruchsteiner",
+      "emails": "cornelia.bruchsteiner@prime-sign.com",
+      "participants": [
+        "- Cornelia Bruchsteiner"
+      ],
+      "roles": [
+        "Observer / Witness (no active implementation)"
+      ],
+      "implementations": [
+        "Observer"
+      ],
+      "scenarios": [],
+      "technical_details": {
+        "endpoints_available": "Observer only / not expected to provide technical integration details",
+        "technical_details": "",
+        "auth_requirements": "",
+        "trust_anchors": "",
+        "technical_constraints": "Current CSC v2 test environment is not intended for general shared access; certificates are provisioned specifically for their setup."
+      }
     }
-  ]
+  ],
+  "pairings": {
+    "certSIGN_Cleverbase": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    },
+    "certSIGN_Namirial": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    },
+    "certSIGN_Entaksi": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    },
+    "certSIGN_STS": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting; certSIGN environment is VPN / curated"
+    },
+    "certSIGN_EAD Trust": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    },
+    "certSIGN_Intesi": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    },
+    "Cleverbase_DocuSign": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Cleverbase_Namirial": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Cleverbase_Entaksi": {
+      "status": "Recommended",
+      "notes": "Wallet-based provider interoperability"
+    },
+    "Cleverbase_STS": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "Cleverbase_Microsec": {
+      "status": "Recommended",
+      "notes": "Wallet-based provider interoperability"
+    },
+    "Cleverbase_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Cleverbase_Docaposte Certinomis": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "DocuSign_Entaksi": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "DocuSign_Namirial": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "DocuSign_STS": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "DocuSign_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "DocuSign_Intesi": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "DocuSign_Microsec": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "DocuSign_certSIGN": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    },
+    "Entaksi_Namirial": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Entaksi_Adobe": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Entaksi_Docaposte Certinomis": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Entaksi_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Entaksi_Intesi": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intarsys / Procilon_Cleverbase": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intarsys / Procilon_Entaksi": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intarsys / Procilon_Namirial": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intarsys / Procilon_STS": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "Intarsys / Procilon_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intarsys / Procilon_Intesi": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intarsys / Procilon_Microsec": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intarsys / Procilon_certSIGN": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    },
+    "Namirial_STS": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "Namirial_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Namirial_Docaposte Certinomis": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Namirial_Intesi": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Namirial_Microsec": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Namirial_Adobe": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "STS_Adobe": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "STS_Docaposte Certinomis": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "STS_EAD Trust": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "Adobe_Cleverbase": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Adobe_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Adobe_Intesi": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Adobe_Microsec": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Aruba / Actalis_Cleverbase": {
+      "status": "Recommended",
+      "notes": "Wallet-based provider interoperability"
+    },
+    "Aruba / Actalis_Namirial": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Aruba / Actalis_DocuSign": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Aruba / Actalis_Entaksi": {
+      "status": "Recommended",
+      "notes": "Wallet-based provider interoperability"
+    },
+    "Aruba / Actalis_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Aruba / Actalis_Docaposte Certinomis": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Aruba / Actalis_STS": {
+      "status": "Conditional",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "Docaposte Certinomis_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "HARICA / GUnet_Cleverbase": {
+      "status": "Recommended",
+      "notes": "Wallet-based provider interoperability; version compatibility may need confirmation (2.1 vs 2.2)"
+    },
+    "HARICA / GUnet_Namirial": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability; version compatibility may need confirmation (2.1 vs 2.2)"
+    },
+    "HARICA / GUnet_DocuSign": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability; version compatibility may need confirmation (2.1 vs 2.2)"
+    },
+    "HARICA / GUnet_Docaposte Certinomis": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability; version compatibility may need confirmation (2.1 vs 2.2)"
+    },
+    "Intesi_Cleverbase": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Intesi_STS": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability; STS may require IP allowlisting"
+    },
+    "Intesi_EAD Trust": {
+      "status": "Recommended",
+      "notes": "Client to provider interoperability"
+    },
+    "Microsec_Entaksi": {
+      "status": "Recommended",
+      "notes": "General role-compatible introduction"
+    },
+    "Microsec_certSIGN": {
+      "status": "Curated only",
+      "notes": "Client to provider interoperability; certSIGN environment is VPN / curated"
+    }
+  }
 }
