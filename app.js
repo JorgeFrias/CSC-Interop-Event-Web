@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const APP_VERSION = '1.3.2';
+    const APP_VERSION = '1.3.4';
     console.log(`CSC Event Wallet v${APP_VERSION} initialized`);
 
     // Theme logic
@@ -152,7 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function parseResultsCSV(text) {
         const lines = text.trim().split('\n');
-        const headers = lines[0].split(',').map(h => h.trim());
+        const headers = lines[0].split(',').map(h => {
+            let header = h.trim();
+            if (header === 'Intesi') return 'Intesi Group';
+            return header;
+        });
         const data = {};
 
         for (let i = 1; i < lines.length; i++) {
@@ -179,15 +183,29 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (row.length < headers.length) continue;
             
-            const orgData = {};
-            const orgName = row[0].replace(/"/g, '').trim();
+            let orgName = row[0].replace(/"/g, '').trim();
+            if (orgName === 'Intesi') orgName = 'Intesi Group';
+            
+            if (!data[orgName]) {
+                data[orgName] = {};
+            }
             
             headers.forEach((header, index) => {
                 if (index > 0 && index < headers.length - 1) { // Scenario or partner columns
-                    orgData[header] = row[index];
+                    const val = row[index];
+                    const current = data[orgName][header];
+                    
+                    if (!current || current === 'Untested' || current === '') {
+                        if (val && val !== '') data[orgName][header] = val;
+                    } else if (val === 'Pass') {
+                        data[orgName][header] = 'Pass';
+                    } else if (val === 'Partial' && current !== 'Pass') {
+                        data[orgName][header] = 'Partial';
+                    } else if (val === 'Issue' && current !== 'Pass' && current !== 'Partial') {
+                        data[orgName][header] = 'Issue';
+                    }
                 }
             });
-            data[orgName] = orgData;
         }
         return data;
     }
