@@ -110,7 +110,7 @@
       ],
       "roles": [
         "Wallet Provider",
-        "CSC Client (non-wallet)"
+        "CSC Service Provider (QTSP / RSSP)"
       ],
       "implementations": [
         "CSC Client (wallet), CSC API v2.2.0 support"
