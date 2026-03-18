@@ -55,11 +55,19 @@ body.light-theme th {
 }
 
 body.light-theme tr:hover td {
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(0, 0, 0, 0.08); /* Darkened hover for better contrast */
+}
+
+body.light-theme tr:nth-child(even) td {
+    background: rgba(0, 0, 0, 0.04); /* Noticeable striped effect */
 }
 
 body.light-theme tr:hover .sticky-col {
-    background: #f1f5f9;
+    background: #e4e6e7; /* Matching solid hex for 0.08 opacity */
+}
+
+body.light-theme tr:nth-child(even) .sticky-col {
+    background: #eef0f1; /* Matching solid hex for 0.04 opacity */
 }
 
 body.light-theme .company-card:hover {
@@ -545,7 +553,11 @@ td {
 }
 
 tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.08); /* Brighter hover for distinctness */
+}
+
+tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.04); /* Clear stripe visibility */
 }
 
 .status-cell {
@@ -588,7 +600,11 @@ th.sticky-col {
 }
 
 tr:hover .sticky-col {
-    background: #0d1117; /* slightly lighter than bg-color so hover is visible */
+    background: #191c21; /* Slightly lighter solid hex to match hover opacity over base bg */
+}
+
+tr:nth-child(even) .sticky-col {
+    background: #0d0f14; /* Slightly lighter solid hex to match even row opacity over base bg */
 }
 
 .rssp-header {

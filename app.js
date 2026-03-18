@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const APP_VERSION = '1.3.1';
+    const APP_VERSION = '1.3.2';
     console.log(`CSC Event Wallet v${APP_VERSION} initialized`);
 
     // Theme logic
