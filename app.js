@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="leaderboard-label">Success Tests</div>
                     </div>
                 `).join('');
-                leaderboardContainer.style.display = 'none'; // 'flex' to show
+                leaderboardContainer.style.display = 'flex'; // 'flex' to show
             } else {
                 leaderboardContainer.style.display = 'none';
             }
