@@ -1,5 +1,5 @@
 Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Intesi Group,Ascertia - InfoCert,Cleverbase,Namirial,Microsec,Ascertia Limited,Aruba / Actalis,Docaposte Certinomis,certSIGN,STS,Intesi,Entaksi,primesign,Role
-Intarsys / Procilon,Pass,Pass,Pass,Pass,Pass,Untested,Pass,,Pass,,,,,,,Pass,Pass,,,RSSP/QTSP
+Intarsys / Procilon,Pass,Pass,Pass,Pass,Pass,Untested,Pass,,Pass,,,,Partial,,,Pass,Pass,,,RSSP/QTSP
 Entaksi,Pass,Pass,Pass,Pass,Pass,Partial,,,,,,,,,,,,,,RSSP/QTSP
 Evrotrust Technologies AD,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,,,,Observer
 Aruba / Actalis,Pass,Pass,Pass,Pass,Pass,Pass,Pass,,Pass,,Issue,,Pass,,,Pass,Pass,,,Wallet
