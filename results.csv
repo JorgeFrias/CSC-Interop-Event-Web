@@ -11,7 +11,7 @@ primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observ
 Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,,,,,Pass,,,,RSSP/QTSP
 Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,,,,,,,,,Client
 Ascertia - InfoCert,Pass,Pass,Pass,Pass,Untested,Untested,Pass,Pass,Pass,,,,,,,,CSC Client (wallet provider)
-Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,,,,Pass,,,Pass,Pass,,,RSSP/QTSP
+Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,Pass,,,Pass,,,Pass,Pass,,,RSSP/QTSP
 Able Tech s.p.a,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
 docusign,Pass,Pass,Pass,Pass,Untested,Untested,,,,,Pass,,,,,,Client
 ANSE,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
