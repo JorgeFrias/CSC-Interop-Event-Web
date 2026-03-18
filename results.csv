@@ -1,25 +1,25 @@
-Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Intesi,Ascertia - InfoCert,Cleverbase,Namirial,Microsec,Ascertia Limited,Aruba / Actalis,Docaposte Certinomis,certSIGN,Role
-Intarsys / Procilon,Pass,Pass,Pass,Pass,Pass,Untested,Pass,,Pass,,,,,,,RSSP/QTSP
-Entaksi,Pass,Pass,Pass,Pass,Pass,Partial,,,,,,,,,,RSSP/QTSP
-Evrotrust Technologies AD,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
-Aruba / Actalis,Pass,Pass,Pass,Pass,Pass,Pass,Pass,,Pass,,,,,,,Wallet
-STS,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,RSSP/QTSP
-certSIGN,Pass,Pass,Pass,Pass,Issue,Pass,Pass,,Pass,,,,,,Pass,Wallet
-"EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,RSSP/QTSP
-Intesi,Pass,Pass,Pass,Issue,Pass,Untested,,,Pass,,,,,,,RSSP/QTSP
-primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
-Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,,,,,Pass,,,RSSP/QTSP
-Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,,,,,,,,Client
-Ascertia - InfoCert,Pass,Pass,Pass,Pass,Untested,Untested,Pass,Pass,Pass,,,,,,,CSC Client (wallet provider)
-Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,,,,Pass,,,Pass,Pass,,RSSP/QTSP
-Able Tech s.p.a,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
-docusign,Pass,Pass,Pass,Pass,Untested,Untested,,,,,Pass,,,,,Client
-ANSE,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
-HARICA/GUnet,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,RSSP/QTSP
-ASEE Solutions d.o.o,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
-ASEE,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
-Ministry of economic affairs and climate policy,Untested,Untested,Untested,Untested,Untested,,Observer,,,,,,,,
-ETSI,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
-iGrant.io,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,Wallet
-Namirial,,,,,,,Pass,,Pass,Pass,,,,,,Wallet
-Ascertia Limited,,,,,,,,,,,,Pass,,,,Consumer (Wallet)
+Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Intesi,Ascertia - InfoCert,Cleverbase,Namirial,Microsec,Ascertia Limited,Aruba / Actalis,Docaposte Certinomis,certSIGN,STS,Role
+Intarsys / Procilon,Pass,Pass,Pass,Pass,Pass,Untested,Pass,,Pass,,,,,,,Pass,RSSP/QTSP
+Entaksi,Pass,Pass,Pass,Pass,Pass,Partial,,,,,,,,,,,RSSP/QTSP
+Evrotrust Technologies AD,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
+Aruba / Actalis,Pass,Pass,Pass,Pass,Pass,Pass,Pass,,Pass,,,,,,,,Wallet
+STS,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,RSSP/QTSP
+certSIGN,Pass,Pass,Pass,Pass,Issue,Pass,Pass,,Pass,,,,,,Pass,,Wallet
+"EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,RSSP/QTSP
+Intesi,Pass,Pass,Pass,Issue,Pass,Untested,,,Pass,,,,,,,,RSSP/QTSP
+primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
+Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,,,,,Pass,,,,RSSP/QTSP
+Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,,,,,,,,,Client
+Ascertia - InfoCert,Pass,Pass,Pass,Pass,Untested,Untested,Pass,Pass,Pass,,,,,,,,CSC Client (wallet provider)
+Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,,,,Pass,,,Pass,Pass,,,RSSP/QTSP
+Able Tech s.p.a,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
+docusign,Pass,Pass,Pass,Pass,Untested,Untested,,,,,Pass,,,,,,Client
+ANSE,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
+HARICA/GUnet,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,RSSP/QTSP
+ASEE Solutions d.o.o,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
+ASEE,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
+Ministry of economic affairs and climate policy,Untested,Untested,Untested,Untested,Untested,,Observer,,,,,,,,,
+ETSI,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
+iGrant.io,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,Wallet
+Namirial,,,,,,,Pass,,Pass,Pass,,,,,,,Wallet
+Ascertia Limited,,,,,,,,,,,,Pass,,,,,Consumer (Wallet)
