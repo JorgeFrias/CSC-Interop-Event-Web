@@ -4,7 +4,7 @@ Entaksi,Pass,Pass,Pass,Pass,Pass,Partial,,,,,,,,,,,,,,RSSP/QTSP
 Evrotrust Technologies AD,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,,,,Observer
 Aruba / Actalis,Pass,Pass,Pass,Pass,Pass,Pass,Pass,,Pass,,Issue,,Pass,,,Pass,Pass,,,Wallet
 STS,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,,,,RSSP/QTSP
-certSIGN,Pass,Pass,Pass,Pass,Issue,Pass,Pass,,Pass,,,,,,Pass,,Pass,,,Wallet
+certSIGN,Pass,Pass,Pass,Pass,Issue,Pass,Pass,,Pass,,Issue,,,,Pass,,Pass,,,Wallet
 "EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,,,,RSSP/QTSP
 Intesi Group,Pass,Pass,Pass,Issue,Pass,Untested,,,Pass,,,,Pass,,,Pass,,,,RSSP/QTSP
 primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,,,,Observer
