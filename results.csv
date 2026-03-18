@@ -8,7 +8,7 @@ certSIGN,Pass,Pass,Pass,Pass,Issue,Pass,Pass,,Pass,,,,,,Wallet
 "EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,RSSP/QTSP
 Intesi,Pass,Pass,Pass,Issue,Pass,Untested,,,Pass,,,,,,RSSP/QTSP
 primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,Observer
-Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,,,,,,,RSSP/QTSP
+Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,,,,,Pass,,RSSP/QTSP
 Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,,,,,,,Client
 Ascertia - InfoCert,Pass,Pass,Pass,Pass,Untested,Untested,,Pass,,,,,,,CSC Client (wallet provider)
 Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,,,,Pass,,,Pass,Pass,RSSP/QTSP
