@@ -109,23 +109,25 @@
         "- Jorge Frias"
       ],
       "roles": [
-        "CSC Client (wallet provider)"
+        "Wallet Provider",
+        "CSC Client (non-wallet)"
       ],
       "implementations": [
-        "CSC Client (wallet)",
-        "CSC API v2.2.0 support"
+        "CSC Client (wallet), CSC API v2.2.0 support"
       ],
       "scenarios": [
         "API-01",
         "API-02",
         "API-03",
-        "API-05"
+        "API-05",
+        "SC-01",
+        "SC-02"
       ],
       "technical_details": {
         "endpoints_available": "Not applicable",
         "technical_details": "",
         "auth_requirements": "",
-        "trust_anchors": "",
+        "trust_anchors": "-----BEGIN CERTIFICATE-----\nMIICwTCCAmegAwIBAgIQVJM+VFix4dp+pqOrC+fCvDAKBggqhkjOPQQDAjBJMQsw\nCQYDVQQGEwJHQjERMA8GA1UEChMIQXNjZXJ0aWExJzAlBgNVBAMTHkFzY2VydGlh\nIElBQ0EgUm9vdCBDZXJ0aWZpY2F0ZTAeFw0yNTAzMjgwODAxMjBaFw0zMDAzMjgw\nODAxMjBaMEkxCzAJBgNVBAYTAkdCMREwDwYDVQQKEwhBc2NlcnRpYTEnMCUGA1UE\nAxMeQXNjZXJ0aWEgSUFDQSBSb290IENlcnRpZmljYXRlMFkwEwYHKoZIzj0CAQYI\nKoZIzj0DAQcDQgAES3Vs/93e6UZxjn6t62q5WGan1pKDp8RFkskcS/k9BBkJIlx4\nk6dqpbVMGVtosB1Yi0t2iXoiJjw8z9xH+h2YAqOCAS8wggErMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEAMB8GA1UdIwQYMBaAFNEFdy5wWq89XMev\nOdWtMnlngiP7MGQGA1UdHwRdMFswWaBXoFWGU2h0dHBzOi8vZ2l0aHViLmNvbS9y\nZWFsbW9pZWVuL3B1YmxpYy11cmwvcmF3L3JlZnMvaGVhZHMvbWFpbi9hc2NlcnRp\nYS1yb290LWlhY2EuY3JsMCQGA1UdEgQdMBuGGWh0dHBzOi8vd3d3LmFzY2VydGlh\nLmNvbS8wJAYDVR0RBB0wG4YZaHR0cHM6Ly93d3cuYXNjZXJ0aWEuY29tLzAdBgNV\nHQ4EFgQU0QV3LnBarz1cx6851a0yeWeCI/swEwYDVR0lBAwwCgYIK4ECAgAAAQcw\nCgYIKoZIzj0EAwIDSAAwRQIgRvVjWEy0NREZeN8tf17B5GpzC+nNAIZYgKZ/H+kQ\nixoCIQDhxZc6WOZ58A5OMohK4X6XNV8s8oEh9QjgfRWKMCBmow==\n-----END CERTIFICATE-----",
         "technical_constraints": ""
       }
     },
@@ -457,8 +459,8 @@
       "technical_details": {
         "endpoints_available": "Yes / externally reachable",
         "technical_details": "CSC API base URL: https://csc.test4mind.com/csc/v2/ ; CSC Client for testing: https://csc.int4mind.com/test/",
-        "auth_requirements": "OAuth2; client_id / client_secret required; Authorization Code or Client Credentials flow",
-        "trust_anchors": "Credentials / certificate details to be provided during event if needed",
+        "auth_requirements": "OAuth2\nclient_id: csc_test\nclient_secret: uX4qEQJkzEsbPAL58maMuydru5iNssB2\nAuthorization Code or Client Credentials flow",
+        "trust_anchors": "-----BEGIN CERTIFICATE-----\nMIIDTzCCArCgAwIBAgIILbJB2BuJPpQwCgYIKoZIzj0EAwIwgbYxPTA7BgNVBAMM\nNEludGVzaSBHcm91cCBFVSBRdWFsaWZpZWQgRWxlY3Ryb25pYyBTZWFsIENBIEVD\nIFRlc3QxLjAsBgNVBAsMJVRlc3QgUXVhbGlmaWVkIFRydXN0IFNlcnZpY2UgUHJv\ndmlkZXIxHDAaBgNVBAoME0ludGVzaSBHcm91cCBTLnAuQS4xGjAYBgNVBGEMEVZB\nVElULTAyNzgwNDgwOTY0MQswCQYDVQQGEwJJVDAeFw0yNDEwMTcwOTQ5MTlaFw00\nNDEwMTcwOTQ5MTlaMIG2MT0wOwYDVQQDDDRJbnRlc2kgR3JvdXAgRVUgUXVhbGlm\naWVkIEVsZWN0cm9uaWMgU2VhbCBDQSBFQyBUZXN0MS4wLAYDVQQLDCVUZXN0IFF1\nYWxpZmllZCBUcnVzdCBTZXJ2aWNlIFByb3ZpZGVyMRwwGgYDVQQKDBNJbnRlc2kg\nR3JvdXAgUy5wLkEuMRowGAYDVQRhDBFWQVRJVC0wMjc4MDQ4MDk2NDELMAkGA1UE\nBhMCSVQwgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAkGAQl84zZdzv5LO8COySI\njAw72E87ikbbuOUSnzL+Gl6qq3SNQaDt8OgYwLBymjuMzDUKnEqZZB7ZdlqQt/Sq\nmgGmWiX+mp4x20IFbKmxNAaKiV6DiQwObsDOYb2vFBL8vIGzzKPPR1eEkjhRkJkZ\nksnto7mT5Nk/LDapCqZVmHXc/KNjMGEwHQYDVR0OBBYEFCbj9T1xIIn8q+FHFLCk\nZSLZtYyRMA8GA1UdEwEB/wQFMAMBAf8wHwYDVR0jBBgwFoAUJuP1PXEgifyr4UcU\nsKRlItm1jJEwDgYDVR0PAQH/BAQDAgEGMAoGCCqGSM49BAMCA4GMADCBiAJCAVls\nmn7PuTi4glErwTp5i5lwiNml79jRXT9Ygu/gKA/Fp42Ctye1A7csvW5oXrdfXhfQ\ngzYcqkmx4Wjp7+MhBXUWAkIB6gmbfyxJxzC7rPzj+L7jOEt/Zo8fvXxcwuXQJjST\nE9zURGl5uUq57ShWJDrNSF/OWL8yXWqw2EwOFzziVUJZYcY=\n-----END CERTIFICATE-----",
         "technical_constraints": "Supports CSC API 2.2.0; some scenarios may be limited"
       }
     },

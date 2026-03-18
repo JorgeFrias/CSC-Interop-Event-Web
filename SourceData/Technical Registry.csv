@@ -11,7 +11,23 @@ Sign hash: /signatures/signhash","OAuth2
 client_id: walletclient
 client_secret: somesecret2",Verifier and issuer certificates provided; QTSP CA to be shared if approved for circulation,OID4VP 1.0; OID4VCI 1.0; PID model ARF 2.8.0; key type ECDSA 256,Cleverbase; Namirial; DocuSign; Intarsys / Procilon; Entaksi; EAD Trust; Docaposte Certinomis; STS,,Optional / if details later provided,,Prepared from orchestration workbook and received replies,Updated from latest screenshots: Wallet / Issuer / Verifier with explicit demo environment details.
 Ascertia - InfoCert,Ascertia - InfoCert,Jorge Frias,jorge.frias@ascertia.com,"- Sven Prinsloo
-- Jorge Frias",Active Participant,Yes,Replied,Active tester,Yes,No,Yes,No,No,No,Externally reachable with coordination,,"CSC Client (wallet), CSC API v2.2.0 support",,,Not applicable,,,,,,,,Optional / if details later provided,,Prepared from orchestration workbook and received replies,
+- Jorge Frias",Active Participant,Yes,Replied,Active tester,Yes,No,Yes,No,No,No,Externally reachable with coordination,,"CSC Client (wallet), CSC API v2.2.0 support",,,Not applicable,,,"-----BEGIN CERTIFICATE-----
+MIICwTCCAmegAwIBAgIQVJM+VFix4dp+pqOrC+fCvDAKBggqhkjOPQQDAjBJMQsw
+CQYDVQQGEwJHQjERMA8GA1UEChMIQXNjZXJ0aWExJzAlBgNVBAMTHkFzY2VydGlh
+IElBQ0EgUm9vdCBDZXJ0aWZpY2F0ZTAeFw0yNTAzMjgwODAxMjBaFw0zMDAzMjgw
+ODAxMjBaMEkxCzAJBgNVBAYTAkdCMREwDwYDVQQKEwhBc2NlcnRpYTEnMCUGA1UE
+AxMeQXNjZXJ0aWEgSUFDQSBSb290IENlcnRpZmljYXRlMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAES3Vs/93e6UZxjn6t62q5WGan1pKDp8RFkskcS/k9BBkJIlx4
+k6dqpbVMGVtosB1Yi0t2iXoiJjw8z9xH+h2YAqOCAS8wggErMA4GA1UdDwEB/wQE
+AwIBBjASBgNVHRMBAf8ECDAGAQH/AgEAMB8GA1UdIwQYMBaAFNEFdy5wWq89XMev
+OdWtMnlngiP7MGQGA1UdHwRdMFswWaBXoFWGU2h0dHBzOi8vZ2l0aHViLmNvbS9y
+ZWFsbW9pZWVuL3B1YmxpYy11cmwvcmF3L3JlZnMvaGVhZHMvbWFpbi9hc2NlcnRp
+YS1yb290LWlhY2EuY3JsMCQGA1UdEgQdMBuGGWh0dHBzOi8vd3d3LmFzY2VydGlh
+LmNvbS8wJAYDVR0RBB0wG4YZaHR0cHM6Ly93d3cuYXNjZXJ0aWEuY29tLzAdBgNV
+HQ4EFgQU0QV3LnBarz1cx6851a0yeWeCI/swEwYDVR0lBAwwCgYIK4ECAgAAAQcw
+CgYIKoZIzj0EAwIDSAAwRQIgRvVjWEy0NREZeN8tf17B5GpzC+nNAIZYgKZ/H+kQ
+ixoCIQDhxZc6WOZ58A5OMohK4X6XNV8s8oEh9QjgfRWKMCBmow==
+-----END CERTIFICATE-----",,,,,Optional / if details later provided,,Prepared from orchestration workbook and received replies,
 certSIGN,certSIGN S.A.,Ionut Ciobanu,ionut.ciobanu@certsign.ro,"Nicolae Ghibu
 George Gugulea
 Ionut Florea
@@ -53,7 +69,29 @@ iGrant,iGrant.io,Lal Chandran,lal@igrant.io,Lal Chandran,Active Participant,No,A
 Intarsys / Procilon,intarsys GmbH / procilon GROUP GmbH,Thomas Pielczyk,tpielczyk@intarsys.de,"Thomas Pielczyk
 Andreas Mayer
 Jörg Henschel",Active Participant,Yes,Replied,Active tester,No,No,Yes,No,No,No,Not publicly exposed / unknown,None explicit,"CSC Client (non-wallet), CSC API v2.2.0 support",Needs CSC providers from other participants; wants wallet-based signing flow testing; would appreciate wallet access before event.,Connect with wallet providers ahead of event if possible.,No / not applicable after role reduction,,,,,Cleverbase; Entaksi; Namirial; STS (conditional on IP access); Aruba / Actalis; EAD Trust; Intesi; Microsec; HARICA / GUnet; certSIGN (curated),,Optional / if details later provided,,Prepared from orchestration workbook and received replies,
-Intesi,Intesi Group,Daniele Ribaudo,dribaudo@intesigroup.com,"Daniele Ribaudo, Francesco Barcellini, Marco Monacelli",Active Participant,Yes,Replied,Active tester,No,Yes,Yes,No,No,No,Externally reachable with coordination,Pairing / counterpart needed,CSC Provider; CSC Client; externally reachable provider/client environment,"Access to CSC endpoints; Test credentials; Remote connectivity requirements; client_id/client_secret for OAuth access; authentication flow (authorization_code and/or client_credentials); testing account owning the signature certificate.",,Yes / externally reachable,"CSC API base URL: https://csc.test4mind.com/csc/v2/ ; CSC Client for testing: https://csc.int4mind.com/test/","OAuth2; client_id / client_secret required; Authorization Code or Client Credentials flow",Credentials / certificate details to be provided during event if needed,Supports CSC API 2.2.0; some scenarios may be limited,Cleverbase; Namirial; DocuSign; Intarsys / Procilon; Entaksi; STS (conditional on IP access); EAD Trust; Adobe; certSIGN (curated),,Yes,,Prepared from orchestration workbook and received replies,Latest screenshots indicate external clients allowed.
+Intesi,Intesi Group,Daniele Ribaudo,dribaudo@intesigroup.com,"Daniele Ribaudo, Francesco Barcellini, Marco Monacelli",Active Participant,Yes,Replied,Active tester,No,Yes,Yes,No,No,No,Externally reachable with coordination,Pairing / counterpart needed,CSC Provider; CSC Client; externally reachable provider/client environment,"Access to CSC endpoints; Test credentials; Remote connectivity requirements; client_id/client_secret for OAuth access; authentication flow (authorization_code and/or client_credentials); testing account owning the signature certificate.",,Yes / externally reachable,"CSC API base URL: https://csc.test4mind.com/csc/v2/ ; CSC Client for testing: https://csc.int4mind.com/test/","OAuth2
+client_id: csc_test
+client_secret: uX4qEQJkzEsbPAL58maMuydru5iNssB2
+Authorization Code or Client Credentials flow","-----BEGIN CERTIFICATE-----
+MIIDTzCCArCgAwIBAgIILbJB2BuJPpQwCgYIKoZIzj0EAwIwgbYxPTA7BgNVBAMM
+NEludGVzaSBHcm91cCBFVSBRdWFsaWZpZWQgRWxlY3Ryb25pYyBTZWFsIENBIEVD
+IFRlc3QxLjAsBgNVBAsMJVRlc3QgUXVhbGlmaWVkIFRydXN0IFNlcnZpY2UgUHJv
+dmlkZXIxHDAaBgNVBAoME0ludGVzaSBHcm91cCBTLnAuQS4xGjAYBgNVBGEMEVZB
+VElULTAyNzgwNDgwOTY0MQswCQYDVQQGEwJJVDAeFw0yNDEwMTcwOTQ5MTlaFw00
+NDEwMTcwOTQ5MTlaMIG2MT0wOwYDVQQDDDRJbnRlc2kgR3JvdXAgRVUgUXVhbGlm
+aWVkIEVsZWN0cm9uaWMgU2VhbCBDQSBFQyBUZXN0MS4wLAYDVQQLDCVUZXN0IFF1
+YWxpZmllZCBUcnVzdCBTZXJ2aWNlIFByb3ZpZGVyMRwwGgYDVQQKDBNJbnRlc2kg
+R3JvdXAgUy5wLkEuMRowGAYDVQRhDBFWQVRJVC0wMjc4MDQ4MDk2NDELMAkGA1UE
+BhMCSVQwgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAkGAQl84zZdzv5LO8COySI
+jAw72E87ikbbuOUSnzL+Gl6qq3SNQaDt8OgYwLBymjuMzDUKnEqZZB7ZdlqQt/Sq
+mgGmWiX+mp4x20IFbKmxNAaKiV6DiQwObsDOYb2vFBL8vIGzzKPPR1eEkjhRkJkZ
+ksnto7mT5Nk/LDapCqZVmHXc/KNjMGEwHQYDVR0OBBYEFCbj9T1xIIn8q+FHFLCk
+ZSLZtYyRMA8GA1UdEwEB/wQFMAMBAf8wHwYDVR0jBBgwFoAUJuP1PXEgifyr4UcU
+sKRlItm1jJEwDgYDVR0PAQH/BAQDAgEGMAoGCCqGSM49BAMCA4GMADCBiAJCAVls
+mn7PuTi4glErwTp5i5lwiNml79jRXT9Ygu/gKA/Fp42Ctye1A7csvW5oXrdfXhfQ
+gzYcqkmx4Wjp7+MhBXUWAkIB6gmbfyxJxzC7rPzj+L7jOEt/Zo8fvXxcwuXQJjST
+E9zURGl5uUq57ShWJDrNSF/OWL8yXWqw2EwOFzziVUJZYcY=
+-----END CERTIFICATE-----",Supports CSC API 2.2.0; some scenarios may be limited,Cleverbase; Namirial; DocuSign; Intarsys / Procilon; Entaksi; STS (conditional on IP access); EAD Trust; Adobe; certSIGN (curated),,Yes,,Prepared from orchestration workbook and received replies,Latest screenshots indicate external clients allowed.
 Microsec,Microsec Zrt,Balázs Czékmány,czekmany.balazs@microsec.hu,"Balázs Czékmány
 László dr. Györgypál",Active Participant,No,Awaiting response,Pending / unconfirmed,No,Yes,No,No,No,No,Externally reachable with coordination,Pairing / counterpart needed,CSC Service Provider; CSC API v2.2.0,Access to wallet implementations; Remote connectivity requirements,,Pending / no endpoint URLs shared yet,Awaiting endpoint details,Awaiting auth details,Awaiting trust details,"for testing we need:
 
