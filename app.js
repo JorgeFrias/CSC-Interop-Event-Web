@@ -2,6 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const APP_VERSION = '1.2.0';
     console.log(`CSC Event Wallet v${APP_VERSION} initialized`);
 
+    // Theme logic
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-theme');
+        if (themeIcon) themeIcon.textContent = 'dark_mode';
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            if (themeIcon) themeIcon.textContent = isLight ? 'dark_mode' : 'light_mode';
+        });
+    }
+
     // Set dynamic Formspree redirects with cache busting
     const forms = document.querySelectorAll('form[action*="formspree.io"]');
     forms.forEach(form => {
@@ -40,8 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial fetch
     fetchData();
 
-    // Auto-refresh every 60 seconds
-    setInterval(fetchData, 60000);
 
     function fetchData() {
         const cacheBuster = `?t=${Date.now()}`;
