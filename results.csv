@@ -1,4 +1,4 @@
-Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Intesi,Ascertia - InfoCert,Cleverbase,Namirial,Microsec,Ascertia Limited,Aruba / Actalis,Docaposte Certinomis,certSIGN,STS,Role
+Organization,API-01,API-02,API-03,API-05,SC-01,SC-02,Intesi Group,Ascertia - InfoCert,Cleverbase,Namirial,Microsec,Ascertia Limited,Aruba / Actalis,Docaposte Certinomis,certSIGN,STS,Role
 Intarsys / Procilon,Pass,Pass,Pass,Pass,Pass,Untested,Pass,,Pass,,,,,,,Pass,RSSP/QTSP
 Entaksi,Pass,Pass,Pass,Pass,Pass,Partial,,,,,,,,,,,RSSP/QTSP
 Evrotrust Technologies AD,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
@@ -6,7 +6,7 @@ Aruba / Actalis,Pass,Pass,Pass,Pass,Pass,Pass,Pass,,Pass,,,,,,,Pass,Wallet
 STS,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,RSSP/QTSP
 certSIGN,Pass,Pass,Pass,Pass,Issue,Pass,Pass,,Pass,,,,,,Pass,,Wallet
 "EAD Trust, European Agency of Digital Trust, S.L.",Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,RSSP/QTSP
-Intesi,Pass,Pass,Pass,Issue,Pass,Untested,,,Pass,,,,,,,,RSSP/QTSP
+Intesi Group,Pass,Pass,Pass,Issue,Pass,Untested,,,Pass,,,,,,,,RSSP/QTSP
 primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,Observer
 Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,,,,,Pass,,,,RSSP/QTSP
 Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,,,,,,,,,Client

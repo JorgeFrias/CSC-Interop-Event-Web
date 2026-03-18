@@ -95,7 +95,7 @@
       "technical_details": {
         "endpoints_available": "Yes / demo environment",
         "technical_details": "CSC API base URL: https://eudiwcsc.demo.arubapec.it\nAuthorization endpoint: oauth2/authorize\nToken endpoint: oauth2/token\nCredentials list: /credentials/list\nCredential info: /credentials/info\nSign hash: /signatures/signhash",
-        "auth_requirements": "OAuth2\nclient_id: walletclient\nclient_secret: somesecret2",
+        "auth_requirements": "OAuth2\nclient_id: wallet-client\nclient_secret: somesecret2",
         "trust_anchors": "Verifier and issuer certificates provided; QTSP CA to be shared if approved for circulation",
         "technical_constraints": "OID4VP 1.0; OID4VCI 1.0; PID model ARF 2.8.0; key type ECDSA 256"
       }
@@ -435,7 +435,7 @@
     },
     {
       "id": "org_12",
-      "organisation": "Intesi",
+      "organisation": "Intesi Group",
       "contact": "Daniele Ribaudo",
       "participants": [
         "Daniele Ribaudo, Francesco Barcellini, Marco Monacelli"
@@ -459,7 +459,7 @@
       "technical_details": {
         "endpoints_available": "Yes / externally reachable",
         "technical_details": "CSC API base URL: https://csc.test4mind.com/csc/v2/ ; CSC Client for testing: https://csc.int4mind.com/test/",
-        "auth_requirements": "OAuth2\nclient_id: csc_test\nclient_secret: uX4qEQJkzEsbPAL58maMuydru5iNssB2\nAuthorization Code or Client Credentials flow",
+        "auth_requirements": "client_id: csc_test\nclient_secret: uX4qEQJkzEsbPAL58maMuydru5iNssB2",
         "trust_anchors": "-----BEGIN CERTIFICATE-----\nMIIDTzCCArCgAwIBAgIILbJB2BuJPpQwCgYIKoZIzj0EAwIwgbYxPTA7BgNVBAMM\nNEludGVzaSBHcm91cCBFVSBRdWFsaWZpZWQgRWxlY3Ryb25pYyBTZWFsIENBIEVD\nIFRlc3QxLjAsBgNVBAsMJVRlc3QgUXVhbGlmaWVkIFRydXN0IFNlcnZpY2UgUHJv\ndmlkZXIxHDAaBgNVBAoME0ludGVzaSBHcm91cCBTLnAuQS4xGjAYBgNVBGEMEVZB\nVElULTAyNzgwNDgwOTY0MQswCQYDVQQGEwJJVDAeFw0yNDEwMTcwOTQ5MTlaFw00\nNDEwMTcwOTQ5MTlaMIG2MT0wOwYDVQQDDDRJbnRlc2kgR3JvdXAgRVUgUXVhbGlm\naWVkIEVsZWN0cm9uaWMgU2VhbCBDQSBFQyBUZXN0MS4wLAYDVQQLDCVUZXN0IFF1\nYWxpZmllZCBUcnVzdCBTZXJ2aWNlIFByb3ZpZGVyMRwwGgYDVQQKDBNJbnRlc2kg\nR3JvdXAgUy5wLkEuMRowGAYDVQRhDBFWQVRJVC0wMjc4MDQ4MDk2NDELMAkGA1UE\nBhMCSVQwgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAkGAQl84zZdzv5LO8COySI\njAw72E87ikbbuOUSnzL+Gl6qq3SNQaDt8OgYwLBymjuMzDUKnEqZZB7ZdlqQt/Sq\nmgGmWiX+mp4x20IFbKmxNAaKiV6DiQwObsDOYb2vFBL8vIGzzKPPR1eEkjhRkJkZ\nksnto7mT5Nk/LDapCqZVmHXc/KNjMGEwHQYDVR0OBBYEFCbj9T1xIIn8q+FHFLCk\nZSLZtYyRMA8GA1UdEwEB/wQFMAMBAf8wHwYDVR0jBBgwFoAUJuP1PXEgifyr4UcU\nsKRlItm1jJEwDgYDVR0PAQH/BAQDAgEGMAoGCCqGSM49BAMCA4GMADCBiAJCAVls\nmn7PuTi4glErwTp5i5lwiNml79jRXT9Ygu/gKA/Fp42Ctye1A7csvW5oXrdfXhfQ\ngzYcqkmx4Wjp7+MhBXUWAkIB6gmbfyxJxzC7rPzj+L7jOEt/Zo8fvXxcwuXQJjST\nE9zURGl5uUq57ShWJDrNSF/OWL8yXWqw2EwOFzziVUJZYcY=\n-----END CERTIFICATE-----",
         "technical_constraints": "Supports CSC API 2.2.0; some scenarios may be limited"
       }
