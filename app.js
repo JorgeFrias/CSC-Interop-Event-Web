@@ -395,8 +395,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 icon = iconMap[status] || '❓';
                                 title += `: ${result}`;
                             } else if (pairing) {
-                                status = 'planned';
-                                icon = '📋';
+                                status = 'untested';
+                                icon = '';
                                 title += `: Planned (${pairing.status})`;
                                 if (pairing.notes) title += ` - ${pairing.notes}`;
                             }
