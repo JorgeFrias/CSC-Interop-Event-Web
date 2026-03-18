@@ -13,7 +13,7 @@ Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,Partial,Pass,Pass,,,,,,Pass,,,C
 Ascertia - InfoCert,Pass,Pass,Pass,Pass,Untested,Untested,Pass,Pass,Pass,,,,Pass,,,,Pass,,,CSC Client (wallet provider)
 Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,Pass,,Issue,Pass,,,Pass,Pass,,,Pass,,,RSSP/QTSP
 Able Tech s.p.a,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,,,,Observer
-docusign,Pass,Pass,Pass,Pass,Untested,Untested,Pass,,Pass,,Pass,,Partial,,,,,,,Client
+docusign,Pass,Pass,Pass,Pass,Untested,Untested,Pass,,Pass,,Pass,,Partial,,,Pass,,,,Client
 ANSE,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,,,,Observer
 HARICA/GUnet,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,,,,,RSSP/QTSP
 ASEE Solutions d.o.o,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,,,,,Observer
