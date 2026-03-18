@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const APP_VERSION = '1.2.0';
+    const APP_VERSION = '1.3.0';
     console.log(`CSC Event Wallet v${APP_VERSION} initialized`);
 
     // Theme logic
@@ -265,7 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
         playbookView.style.display = 'block';
 
         if (!renderPlaybook.loaded) {
-            fetch('playbook.md')
+            const cacheBuster = `?t=${Date.now()}`;
+            fetch(`playbook.md${cacheBuster}`)
                 .then(r => r.text())
                 .then(text => {
                     playbookContent.innerHTML = marked.parse(text);
