@@ -2,8 +2,8 @@ name: Fetch Formspree Results
 
 on:
   schedule:
-    # Run every 10 minutes
-    - cron: '*/10 * * * *'
+    # Run every 3 minutes
+    - cron: '*/3 * * * *'
   workflow_dispatch:
     # Allow manual triggers from the GitHub Actions UI
 
