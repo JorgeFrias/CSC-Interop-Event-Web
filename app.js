@@ -354,6 +354,56 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Leaderboard Calculation
+        const companyScores = {};
+        companies.forEach(c => companyScores[c.organisation] = 0);
+
+        wallets.forEach(wallet => {
+            rssps.forEach(rssp => {
+                const normalizedWalletName = wallet.organisation.toLowerCase();
+                const normalizedRsspName = rssp.organisation.toLowerCase();
+                
+                let result = null;
+                const resOrgKey = Object.keys(resultsData).find(k => k.toLowerCase() === normalizedWalletName);
+                if (resOrgKey) {
+                    const resRsspKey = Object.keys(resultsData[resOrgKey]).find(k => k.toLowerCase() === normalizedRsspName);
+                    if (resRsspKey) {
+                        result = resultsData[resOrgKey][resRsspKey];
+                    }
+                }
+
+                if (result && result.toLowerCase() === 'pass') {
+                    if (companyScores[wallet.organisation] !== undefined) companyScores[wallet.organisation]++;
+                    if (companyScores[rssp.organisation] !== undefined) companyScores[rssp.organisation]++;
+                }
+            });
+        });
+
+        const leaderboardContainer = document.getElementById('leaderboard');
+        if (leaderboardContainer) {
+            const sortedCompanies = Object.entries(companyScores)
+                .filter(([org, score]) => score > 0)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+            
+            if (sortedCompanies.length > 0) {
+                leaderboardContainer.innerHTML = sortedCompanies.map(([org, score], index) => `
+                    <div class="leaderboard-card rank-${index + 1}">
+                        <div class="leaderboard-rank">
+                            <span class="material-symbols-outlined">${index === 0 ? 'emoji_events' : 'workspace_premium'}</span>
+                            ${index === 0 ? '1st Place' : index === 1 ? '2nd Place' : '3rd Place'}
+                        </div>
+                        <div class="leaderboard-org" title="${org}">${org}</div>
+                        <div class="leaderboard-score">${score}</div>
+                        <div class="leaderboard-label">Success Tests</div>
+                    </div>
+                `).join('');
+                leaderboardContainer.style.display = 'none'; // 'flex' to show
+            } else {
+                leaderboardContainer.style.display = 'none';
+            }
+        }
+
         const headerHtml = `
             <thead>
                 <tr>
