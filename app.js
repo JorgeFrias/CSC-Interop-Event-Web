@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Extract Wallets and RSSPs from the filtered list, excluding withdrawn participants from the Matrix
         const isNotWithdrawn = c => c.technical_details && c.technical_details.endpoints_available !== 'Withdrawn';
-        const wallets = companies.filter(c => (c.roles.includes('Wallet Provider') || c.roles.includes('CSC Client (non-wallet)')) && isNotWithdrawn(c));
+        const wallets = companies.filter(c => (c.roles.includes('Wallet Provider') || c.roles.includes('CSC Client (non-wallet)') || c.roles.includes('CSC Client (wallet provider)')) && isNotWithdrawn(c));
         const rssps = companies.filter(c => c.roles.includes('CSC Service Provider (QTSP / RSSP)') && isNotWithdrawn(c));
 
         if (wallets.length === 0 || rssps.length === 0) {

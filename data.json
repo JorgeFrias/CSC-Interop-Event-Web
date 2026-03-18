@@ -108,17 +108,25 @@
         "- Sven Prinsloo",
         "- Jorge Frias"
       ],
-      "roles": [],
-      "implementations": [
-        "Organiser and technical assistance only"
+      "roles": [
+        "CSC Client (wallet provider)"
       ],
-      "scenarios": [],
+      "implementations": [
+        "CSC Client (wallet)",
+        "CSC API v2.2.0 support"
+      ],
+      "scenarios": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-05"
+      ],
       "technical_details": {
         "endpoints_available": "Not applicable",
         "technical_details": "",
         "auth_requirements": "",
         "trust_anchors": "",
-        "technical_constraints": "Not part of participant interoperability matrix"
+        "technical_constraints": ""
       }
     },
     {
