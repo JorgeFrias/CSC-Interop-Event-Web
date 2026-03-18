@@ -10,7 +10,7 @@ Intesi,Pass,Pass,Pass,Issue,Pass,Untested,,,Pass,,,,,,,RSSP/QTSP
 primesign,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
 Cleverbase,Pass,Pass,Pass,Pass,Pass,Pass,,,,,,,Pass,,,RSSP/QTSP
 Adobe,Pass,Pass,Pass,Pass,Partial,Untested,Pass,,,,,,,,,Client
-Ascertia - InfoCert,Pass,Pass,Pass,Pass,Untested,Untested,Pass,Pass,,,,,,,,CSC Client (wallet provider)
+Ascertia - InfoCert,Pass,Pass,Pass,Pass,Untested,Untested,Pass,Pass,Pass,,,,,,,CSC Client (wallet provider)
 Docaposte Certinomis,Pass,Pass,Pass,Pass,Pass,Untested,,,,Pass,,,Pass,Pass,,RSSP/QTSP
 Able Tech s.p.a,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
 docusign,Pass,Pass,Pass,Pass,Untested,Untested,,,,,Pass,,,,,Client
@@ -21,5 +21,5 @@ ASEE,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
 Ministry of economic affairs and climate policy,Untested,Untested,Untested,Untested,Untested,,Observer,,,,,,,,
 ETSI,Untested,Untested,Untested,Untested,Untested,Untested,,,,,,,,,,Observer
 iGrant.io,Pass,Pass,Pass,Pass,Pass,Untested,,,,,,,,,,Wallet
-Namirial,,,,,,,Pass,,Pass,,,,,,,Wallet
+Namirial,,,,,,,Pass,,Pass,Pass,,,,,,Wallet
 Ascertia Limited,,,,,,,,,,,,Pass,,,,Consumer (Wallet)
