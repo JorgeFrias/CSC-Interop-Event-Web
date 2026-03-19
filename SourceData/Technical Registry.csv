@@ -10,7 +10,7 @@ Credential info: /credentials/info
 Sign hash: /signatures/signhash","OAuth2
 client_id: walletclient
 client_secret: somesecret2",Verifier and issuer certificates provided; QTSP CA to be shared if approved for circulation,OID4VP 1.0; OID4VCI 1.0; PID model ARF 2.8.0; key type ECDSA 256,Cleverbase; Namirial; DocuSign; Intarsys / Procilon; Entaksi; EAD Trust; Docaposte Certinomis; STS,,Optional / if details later provided,,Prepared from orchestration workbook and received replies,Updated from latest screenshots: Wallet / Issuer / Verifier with explicit demo environment details.
-Ascertia - InfoCert,Ascertia - InfoCert,Jorge Frias,jorge.frias@ascertia.com,"- Sven Prinsloo
+Tinexta InfoCert,Tinexta InfoCert,Jorge Frias,jorge.frias@ascertia.com,"- Sven Prinsloo
 - Jorge Frias",Active Participant,Yes,Replied,Active tester,Yes,No,Yes,No,No,No,Externally reachable with coordination,,"CSC Client (wallet), CSC API v2.2.0 support",,,Not applicable,,,"-----BEGIN CERTIFICATE-----
 MIICwTCCAmegAwIBAgIQVJM+VFix4dp+pqOrC+fCvDAKBggqhkjOPQQDAjBJMQsw
 CQYDVQQGEwJHQjERMA8GA1UEChMIQXNjZXJ0aWExJzAlBgNVBAMTHkFzY2VydGlh
